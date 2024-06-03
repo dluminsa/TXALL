@@ -201,8 +201,8 @@ if file is not None:
             dfe = df.shape[0]
 
             #file = r"C:\Users\Desire Lumisa\Desktop\TX CURR\MATEETE.xlsx"
-            
-            dfx = pd.read_excel(ALL.xlsx)
+            file2 = r'ALL.xlsx'
+            dfx = pd.read_excel(file2)
             
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
