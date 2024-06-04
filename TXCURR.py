@@ -205,6 +205,9 @@ if file is not None:
             dfx = pd.read_excel(file2)
             
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
+            df = df[((df['Ryear'] ==2024)  & (df['Rmonth']>3))].copy()
+            st.write(df.shape[0])
+            st.stop()
             TXML = df[df['Ryear']==2024].copy()
             TXML[['Rmonth', 'Rday']] = TXML[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
             TXML = TXML[((TXML['Rmonth']>3) | ((TXML['Rmonth']==3) & (TXML['Rday']>3)))].copy()
