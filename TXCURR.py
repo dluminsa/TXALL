@@ -205,9 +205,11 @@ if file is not None:
             dfx = pd.read_excel(file2)
             
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
-            df = df[((df['Ryear'] ==2024)  & (df['Rmonth']>3))].copy()
-            st.write(df.shape[0])
-            st.stop()
+            dfw = df[df['Ryear'] ==2025].copy()
+            dfx = df[((df['Ryear'] ==2024)  & (df['Rmonth']>3))].copy()
+            df = pd.concat([dfw,dfx])
+            potential = df.shape[0]
+            df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
             TXML[['Rmonth', 'Rday']] = TXML[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
             TXML = TXML[((TXML['Rmonth']>3) | ((TXML['Rmonth']==3) & (TXML['Rday']>3)))].copy()
@@ -237,11 +239,13 @@ if file is not None:
             df[['Tyear', 'Tmonth']] = df[['Tyear', 'Tmonth']].apply(pd.to_numeric, errors='coerce')
             TO = df[df['Tyear']!=1994].copy()
             TO[['Ryear', 'Rmonth', 'Rday']] = TO[['Ryear', 'Rmonth','Rday']].apply(pd.to_numeric, errors='coerce')
+            
             TOa = TO[((TO['Ryear']==2024) & (TO['Rmonth']<7))].copy()
             TOa[['Rmonth', 'Rday']] = TOa[['Rmonth','Rday']].apply(pd.to_numeric, errors='coerce')
             TOa = TOa[((TOa['Rmonth'] >3) | ((TOa['Rmonth'] ==3) & (TOa['Rday'] >3)))].copy()
-            TOa[['Tmonth', 'Tyear']] = TOa[['Tmonth','Tyear']].apply(pd.to_numeric, errors='coerce')
-            TOa = TOa[((TOa['Tyear']==2024) & (TOa['Tmonth'].isin([4,5,6])))].copy()
+            #TOa[['Tmonth', 'Tyear']] = TOa[['Tmonth','Tyear']].apply(pd.to_numeric, errors='coerce')
+            #TOa = TOa[((TOa['Tyear']==2024) & (TOa['Tmonth'].isin([4,5,6])))].copy()
+            
             FALSE = TO[((TO['Ryear']>2024) | ((TO['Ryear']==2024) & (TO['Rmonth']>6)))].copy()
             TXCUR = pd.concat([TXCURR,FALSE])
             new = TXNEW.shape[0]
