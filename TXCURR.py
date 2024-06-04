@@ -267,6 +267,8 @@ if file is not None:
             #     districts = dfx[dfx['CLUSTER']==cluster]
             #     districts = list(districts['DISTRICT'].unique())
             #     district = st.radio(label='**Choose a district**', options=districts,index=None, horizontal=True)
+            st.write(dfx.columns)
+            st.stop()
             districts = list(dfx['DISTRICT'].unique())
             district = st.radio(label='**Choose a district**', options=districts,index=None, horizontal=True)
             if district:
