@@ -227,14 +227,7 @@ if file is not None:
             b['Tyear'] = pd.to_numeric(b['Tyear'], errors='coerce')
             b = b[b['Tyear']==1994].copy()
             TXCURR = pd.concat([a,b])
-            TXCURR['Ayear'] = pd.to_numeric(TXCURR['Ayear'], errors='coerce')
-            c = TXCURR[ TXCURR['Ayear']==2024].copy()
-            d = TXCURR[ TXCURR['Ayear']<2024].copy()
-            d[['Vyear', 'Vmonth']] = d[['Vyear', 'Vmonth']].apply(pd.to_numeric, errors='coerce')
-            e = d[((d['Vyear'] ==2024) | ((d['Vyear'] ==2023) & (d['Vmonth'] >6)))].copy()
-            f = d[((d['Vyear'] < 2023) | ((d['Vyear'] ==2023) & (d['Vmonth'] <7)))].copy()
-            WVL = pd.concat([c,e])
-            NOVL = f.copy()
+            #TX NEW
             df[['Ayear', 'Amonth']] = df[['Ayear', 'Amonth']].apply(pd.to_numeric, errors='coerce')
             TXNEW = df[((df['Ayear']==2024) & (df['Amonth'].isin([4,5,6])))].copy()
             df[['Tiyear', 'Timonth']] = df[['Tiyear', 'Timonth']].apply(pd.to_numeric, errors='coerce')
@@ -251,6 +244,16 @@ if file is not None:
             
             FALSE = TO[((TO['Ryear']>2024) | ((TO['Ryear']==2024) & (TO['Rmonth']>6)))].copy()
             TXCUR = pd.concat([TXCURR,FALSE])
+
+            #VL COV
+            TXCUR['Ayear'] = pd.to_numeric(TXCUR['Ayear'], errors='coerce')
+            c = TXCUR[ TXCUR['Ayear']==2024].copy()
+            d = TXCUR[ TXCUR['Ayear']<2024].copy()
+            d[['Vyear', 'Vmonth']] = d[['Vyear', 'Vmonth']].apply(pd.to_numeric, errors='coerce')
+            e = d[((d['Vyear'] ==2024) | ((d['Vyear'] ==2023) & (d['Vmonth'] >6)))].copy()
+            f = d[((d['Vyear'] < 2023) | ((d['Vyear'] ==2023) & (d['Vmonth'] <7)))].copy()
+            WVL = pd.concat([c,e])
+            NOVL = f.copy()
 
             POTENTIAL = potential
             new = TXNEW.shape[0]
