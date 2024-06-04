@@ -248,6 +248,8 @@ if file is not None:
             
             FALSE = TO[((TO['Ryear']>2024) | ((TO['Ryear']==2024) & (TO['Rmonth']>6)))].copy()
             TXCUR = pd.concat([TXCURR,FALSE])
+
+            POTENTIAL = potential
             new = TXNEW.shape[0]
             out = TOa.shape[0]
             inn = TI.shape[0]
@@ -292,6 +294,7 @@ if file is not None:
                                 'DISTRICT': district,
                                 'FACILITY' : facility,
                                 'Q2 CURR':prev,
+                                'POTENTIAL': potential,
                                 'Q3 CURR': curr,
                                 'TXML' : lost,
                                 'TX NEW' : new,
