@@ -207,9 +207,10 @@ if file is not None:
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             dfw = df[df['Ryear'] ==2025].copy()
             dfy = df[df['Ryear'] ==2024].copy()
-            dfy['Rmonth', 'Rday'] = dfy['Rmonth', 'Rday'].apply(pd.to_numeric, errors = 'coerce')
+            dfy[['Rmonth', 'Rday']] = dfy[['Rmonth', 'Rday']].apply(pd.to_numeric, errors = 'coerce')
             dfy = dfy[((dfy['Rmonth']>3) | ((dfy['Rmonth']==3) & (dfy['Rday'] >3)))].copy()
             df = pd.concat([dfw,dfy])
+            
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
