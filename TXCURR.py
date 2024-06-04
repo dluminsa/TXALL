@@ -206,8 +206,8 @@ if file is not None:
             
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             dfw = df[df['Ryear'] ==2025].copy()
-            dfx = df[((df['Ryear'] ==2024)  & (df['Rmonth']>3))].copy()
-            df = pd.concat([dfw,dfx])
+            dfy = df[((df['Ryear'] ==2024)  & (df['Rmonth']>3))].copy()
+            df = pd.concat([dfw,dfy])
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
@@ -267,8 +267,6 @@ if file is not None:
             #     districts = dfx[dfx['CLUSTER']==cluster]
             #     districts = list(districts['DISTRICT'].unique())
             #     district = st.radio(label='**Choose a district**', options=districts,index=None, horizontal=True)
-            st.write(dfx.columns)
-            st.stop()
             districts = list(dfx['DISTRICT'].unique())
             district = st.radio(label='**Choose a district**', options=districts,index=None, horizontal=True)
             if district:
