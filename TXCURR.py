@@ -240,15 +240,11 @@ if file is not None:
             TOa[['Tmonth', 'Tyear']] = TOa[['Tmonth','Tyear']].apply(pd.to_numeric, errors='coerce')
             TOa = TOa[((TOa['Tyear']==2024) & (TOa['Tmonth'].isin([4,5,6])))].copy()
             FALSE = TO[((TO['Ryear']>2024) | ((TO['Ryear']==2024) & (TO['Rmonth']>6)))].copy()
-            st.write(FALSE.shape[0])
-            st.write(TXCURR.shape[0])
             TXCUR = pd.concat([TXCURR,FALSE])
-            st.write(TXCUR.shape[0])
             new = TXNEW.shape[0]
             out = TOa.shape[0]
             inn = TI.shape[0]
             curr = TXCUR.shape[0]
-            st.write(curr)
             false = FALSE.shape[0]
             lost = TXML.shape[0]
             vl = WVL.shape[0]
