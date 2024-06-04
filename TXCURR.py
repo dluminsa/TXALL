@@ -245,7 +245,7 @@ if file is not None:
             new = TXNEW.shape[0]
             out = TOa.shape[0]
             inn = TI.shape[0]
-            curr = TXCURR.shape[0]
+            curr = TXCUR.shape[0]
             false = FALSE.shape[0]
             lost = TXML.shape[0]
             vl = WVL.shape[0]
