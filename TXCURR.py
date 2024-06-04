@@ -241,7 +241,7 @@ if file is not None:
             TOa = TOa[((TOa['Tyear']==2024) & (TOa['Tmonth'].isin([4,5,6])))].copy()
             FALSE = TO[((TO['Ryear']>2024) | ((TO['Ryear']==2024) & (TO['Rmonth']>6)))].copy()
             st.write(FALSE.shape[0])
-            st.write(TXCURR.shape[0]
+            st.write(TXCURR.shape[0])
             TXCUR = pd.concat([TXCURR,FALSE])
             st.write(TXCUR.shape[0])
             new = TXNEW.shape[0]
