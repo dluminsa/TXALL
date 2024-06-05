@@ -284,6 +284,10 @@ if file is not None:
                     prev = int(preva.iloc[0,3])
                     name =str(preva.iloc[0,4])
                     UK = potential- prev - inn - new
+                    st.write(potential)
+                    st.write(prev)
+                    st.write(inn)
+                    st.write(new)
                     st.write(UK)
                     st.stop()
                     grow = curr-prev
