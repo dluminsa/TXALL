@@ -283,6 +283,7 @@ if file is not None:
                     preva = dfx[dfx['FACILITY'] == facility]
                     prev = int(preva.iloc[0,3])
                     name =str(preva.iloc[0,4])
+                    UK = potential- prev - inn - new
                     grow = curr-prev
                     if grow>0:
                         st.success(f'WEBALE {name},😐 you have grown this TXCURR by {grow}, but you need to audit the TIs and TXNEWs, and watch out for RTT 👏👏👏')
@@ -300,6 +301,7 @@ if file is not None:
                                 'DISTRICT': district,
                                 'FACILITY' : facility,
                                 'Q2 CURR':prev,
+                                'UNKNOWN GAIN': UK,
                                 'POTENTIAL': potential,
                                 'Q3 CURR': curr,
                                 'TXML' : lost,
