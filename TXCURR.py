@@ -210,7 +210,7 @@ if file is not None:
             dfy[['Rmonth', 'Rday']] = dfy[['Rmonth', 'Rday']].apply(pd.to_numeric, errors = 'coerce')
             dfy = dfy[((dfy['Rmonth']>3) | ((dfy['Rmonth']==3) & (dfy['Rday'] >3)))].copy()
             df = pd.concat([dfw,dfy])
-            
+            df = df.rename(columns={'A': 'ART NO', 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
@@ -332,5 +332,34 @@ if file is not None:
                             updated = pd.concat([existing, data], ignore_index =True)
                             conn.update(worksheet = 'TXML', data = updated)
                             st.success('Your data above has been submitted')
+                            st.write(f"<h6>DOWNLOAD LINELISTS FROM HERE</h6>", unsafe_allow_html=True)
+                            cola, colb, colc = st.columns(3)
+                            with cola:
+                                dat = TXML.copy()
+                                dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
+                                csv_data = dat.to_csv(index=True)
+                                st.download_button(
+                                         label=" DOWNLOAD TXML",
+                                         data=csv_data,
+                                         file_name=f"TXML.csv",
+                                         mime="text/csv")
+                            with colb:
+                                 dat = NOVL.copy()
+                                dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
+                                csv_data = dat.to_csv(index=True)
+                                st.download_button(
+                                         label=" DOWNLOAD NO VL",
+                                         data=csv_data,
+                                         file_name=f"NOVL.csv",
+                                         mime="text/csv")
+                            with colc:
+                                 dat = TOa.copy()
+                                dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
+                                csv_data = dat.to_csv(index=True)
+                                st.download_button(
+                                         label=" DOWNLOAD TRANSFER OUTS",
+                                         data=csv_data,
+                                         file_name=f"T OUTS.csv",
+                                         mime="text/csv")
                         except:
                             st.write("Couldn't submit, poor network")
