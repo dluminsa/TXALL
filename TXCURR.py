@@ -344,7 +344,7 @@ if file is not None:
                                          file_name=f"TXML.csv",
                                          mime="text/csv")
                             with colb:
-                                 dat = NOVL.copy()
+                                dat = NOVL.copy()
                                 dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
                                 csv_data = dat.to_csv(index=True)
                                 st.download_button(
@@ -353,7 +353,7 @@ if file is not None:
                                          file_name=f"NOVL.csv",
                                          mime="text/csv")
                             with colc:
-                                 dat = TOa.copy()
+                                dat = TOa.copy()
                                 dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
                                 csv_data = dat.to_csv(index=True)
                                 st.download_button(
