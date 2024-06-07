@@ -102,14 +102,15 @@ if file is not None:
             except:
                 pass
             try:
-                df['RD'] = df['RD'].astype(str)
+                #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
+                st.write(df['RD'].dtypes())
+                st.stop()
                 df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
-                st.write(df['RD'])
-                st.stop()
+
             except:
                 pass
             try:
