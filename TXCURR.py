@@ -104,8 +104,6 @@ if file is not None:
             try:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
-                st.write(df['RD'].dtypes())
-                st.stop()
                 df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
@@ -157,6 +155,7 @@ if file is not None:
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].str.replace('*', '/',regex=True)
             st.write(df['RD'])
+            st.write(df['RD'].dtypes())
             st.stop()
             df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
