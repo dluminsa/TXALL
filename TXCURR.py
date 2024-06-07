@@ -182,7 +182,7 @@ if file is not None:
                df[['Tiyear', 'Tiday']] =df[['Tiyear','Tiday']].apply(pd.to_numeric, errors = 'coerce')
             except:
                 st.write('**There are no dates in the transfer in column**')
-                st. markdown('##')
+                #st. markdown('##')
                 st.write('Copy one date from the Return Visit date and paste it in the Transfer in date, and try again')
                 st.write('But this will mean the number of Transfer in is wrong but other paarameters will be correct')
                 st.markdown('##')
