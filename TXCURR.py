@@ -150,6 +150,7 @@ if file is not None:
                 pass
 
                #BRINGING BACK THE / IN DATES
+            df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].str.replace('*', '/',regex=True)
             df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
