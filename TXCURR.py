@@ -152,9 +152,9 @@ if file is not None:
                #BRINGING BACK THE / IN DATES
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].str.replace('*', '/',regex=True)
-            df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             st.write(df['RD'])
             st.stop()
+            df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
             #df['LD'] = df['LD'].str.replace('*', '/',regex=True)
             df['TO'] = df['TO'].str.replace('*', '/',regex=True)
