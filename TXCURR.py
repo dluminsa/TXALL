@@ -327,7 +327,7 @@ if file is not None:
                     if submit:
                         try:
                             conn = st.connection('gsheets', type=GSheetsConnection)
-                            exist = conn.read(worksheet ='TXML', usecols = list(range(13)), ttl=5)
+                            exist = conn.read(worksheet ='TXML', usecols = list(range(15)), ttl=5)
                             existing = exist.dropna(how='all')
                             updated = pd.concat([existing, data], ignore_index =True)
                             conn.update(worksheet = 'TXML', data = updated)
