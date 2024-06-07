@@ -65,6 +65,8 @@ if file is not None:
             if df['TI'].str.contains('YES').any():
                 st.write("The transfer in column you are using doesn't have dates but words, like YES, kindly use the right transfer in colum")
                 st.stop()
+            
+            df['TI'] = df['TI'].fillna('22/06/1905')
             df['AS'] = df['AS'].str.replace('/', '*', regex=True)
             df['RD'] = df['RD'].str.replace('/', '*', regex=True)
             df['VD'] = df['VD'].str.replace('/', '*',regex=True)
@@ -82,7 +84,7 @@ if file is not None:
             df['VD'] = df['VD'].str.replace('00:00:00', '', regex=True)
             df['TO'] = df['TO'].str.replace('00:00:00', '', regex=True)
             df['TI'] = df['TI'].str.replace('00:00:00', '',regex=True)
-            df['TI'] = df['TI'].fillna(2000)
+            
             try:
                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
             except:
