@@ -107,6 +107,8 @@ if file is not None:
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
+                st.write(df['RD'])
+                st.stop()
             except:
                 pass
             try:
