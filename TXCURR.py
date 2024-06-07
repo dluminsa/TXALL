@@ -339,7 +339,7 @@ if file is not None:
                     with cola:
                          dat = TXML.copy()
                          dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
-                         csv_data = dat.to_csv(index=True)
+                         csv_data = dat.to_csv(index=False)
                          st.download_button(
                                      label=" DOWNLOAD TXML",
                                      data=csv_data,
@@ -348,7 +348,7 @@ if file is not None:
                     with colb:
                          dat = NOVL.copy()
                          dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
-                         csv_data = dat.to_csv(index=True)
+                         csv_data = dat.to_csv(index=False)
                          st.download_button(
                                          label=" DOWNLOAD NO VL",
                                          data=csv_data,
@@ -357,7 +357,7 @@ if file is not None:
                     with colc:
                          dat = TOa.copy()
                          dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
-                         csv_data = dat.to_csv(index=True)
+                         csv_data = dat.to_csv(index=False)
                          st.download_button(
                                      label=" DOWNLOAD TRANSFER OUTS",
                                      data=csv_data,
