@@ -155,7 +155,7 @@ if file is not None:
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].str.replace('*', '/',regex=True)
             st.write(df['RD'])
-            st.write(df['RD'].dtypes())
+            st.write(df['RD'].dtype())
             st.stop()
             df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
