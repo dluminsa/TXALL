@@ -62,6 +62,9 @@ if file is not None:
             #df.dropna(subset='ART', inplace=True)
             df = df.copy()
             df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
+            if df['TI'].str.contains('YES').any():
+                st.write("The transfer in column you are using doesn't have dates but words, like YES, kindly use the right transfer in colum")
+                st.stop()
             df['AS'] = df['AS'].str.replace('/', '*', regex=True)
             df['RD'] = df['RD'].str.replace('/', '*', regex=True)
             df['VD'] = df['VD'].str.replace('/', '*',regex=True)
