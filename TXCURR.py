@@ -178,7 +178,7 @@ if file is not None:
             #df['Tiyear'] = df['Tiyear'].fillna(2022)
             #df['Timonth'] = df['Timonth'].fillna(2)
             #df['Tiday'] = df['Tiday'].fillna(2)
-            #df[['Tiyear', 'Tiday']] =df[['Tiyear','Tiday']].apply(pd.to_numeric, errors = 'coerce')
+            df[['Tiyear', 'Tiday']] =df[['Tiyear','Tiday']].apply(pd.to_numeric, errors = 'coerce')
             df['Tiyear'] = df['Tiyear'].fillna(2022)
             a = df[df['Tiyear']>31].copy()
             b = df[df['Tiyear']<32].copy()
