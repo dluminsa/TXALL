@@ -181,10 +181,12 @@ if file is not None:
             try:
                df[['Tiyear', 'Tiday']] =df[['Tiyear','Tiday']].apply(pd.to_numeric, errors = 'coerce')
             except:
-                st.write('There are no dates in the transfer in column')
+                st.write('**There are no dates in the transfer in column**')
+                st. markdown('##')
                 st.write('Copy one date from the Return Visit date and paste it in the Transfer in date, and try again')
                 st.write('But this will mean the number of Transfer in is wrong but other paarameters will be correct')
-                st.write('Another option is to extract a new extract with Transfer in Obs date')
+                st.markdown('##')
+                st.write('**Another option is to extract a new extract with Transfer in Obs date**')
                 st.stop()
             df['Tiyear'] = df['Tiyear'].fillna(2022)
             a = df[df['Tiyear']>31].copy()
