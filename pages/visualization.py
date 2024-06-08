@@ -205,7 +205,8 @@ highestb = highest[highest['WEEK']==m]
 coly, colu = st.columns(2)
 if highesta.shape[0]==0:
     with coly:
-         st.write("These facilities/facility have no high TXML or there is no report for them this week")
+         st.markdown('##')
+         st.write("Selected facility or facilities do not have high TXML or didn't report this week")
 else:
     figa = px.bar(
     highesta,
@@ -219,7 +220,8 @@ else:
          st.plotly_chart(figa, use_container_width=True)
 if highestb.shape[0]==0:
     with colu:
-         st.write("These facilities/facility have no high TXML or there is no report for them last week")
+         st.markdown('##')
+         st.write("Selected facility or facilities do not have high TXML or didn't report last week")
 else:
     figk = px.bar(
     highestb,
