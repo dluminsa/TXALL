@@ -8,15 +8,15 @@ from pathlib import Path
 from streamlit_gsheets import GSheetsConnection
 import plotly.express as px
 import plotly.graph_objects as go
-# conn = st.connection('gsheets', type=GSheetsConnection)
+conn = st.connection('gsheets', type=GSheetsConnection)
 
-# df = conn.read(worksheet='TXML', usecols=list(range(13)), ttl=5)
-# df = df.dropna(how='all')
-file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
-df = pd.read_excel(file)
+df = conn.read(worksheet='TXML', usecols=list(range(13)), ttl=5)
+df = df.dropna(how='all')
+#file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
+#df = pd.read_excel(file)
 st.sidebar.subheader('Filter from here ')
 week = st.sidebar.multiselect('Pick a week', df['WEEK'].unique())
-file2 = r'C:\Users\Desire Lumisa\Desktop\TXES\ALL.xlsx'
+file2 = r'ALL.xlsx'
 dfx = pd.read_excel(file2)
 #create for the state
 if not week:
