@@ -281,7 +281,7 @@ with col1:
 pied = filtered_df[filtered_df['WEEK']==k]    
 pied = pied[['HAS VL', 'NO VL']]
 melted = pied.melt(var_name='Category', value_name='values')
-fig = px.pie(melted, values= 'values', names='Category', hole=0.5)
+fig = px.pie(melted, values= 'values', title='LASTEST VL COVERAGE', names='Category', hole=0.5)
     #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
 if pied.shape[0]==0:
     with col2:
