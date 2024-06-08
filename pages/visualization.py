@@ -193,28 +193,40 @@ st.plotly_chart(fig5, use_container_width= True)
 #HIGHEST TXML 
 st.divider()
 current_time = time.localtime()
-a = time.strftime("%V", current_time)
+k = time.strftime("%V", current_time)
+m = k-1
 highest = filtered_df[filtered_df['TXML']>100]
 #highest = highest.sort_values(by =['TX ML'], ascending = False)
 highest = highest.sort_values(by=['TXML'])#, ascending=False)
-if highest.shape[0]==0:
-    st.write("This facility does not have high TXML or didn't report last week")
+highesta = highest[highest['WEEK']==k]
+highestb = highest[highest['WEEK']==m]
+coly, colu = st.columns([2,1])
+if highesta.shape[0]==0:
+    st.write("These facilities/facility have no high TXML or there is no report for them this week")
 else:
     figa = px.bar(
-    highest,
+    highesta,
     x='TXML',
     y='FACILITY',
     orientation='h',
-    title='Facilities with highest TXML',
+    title='Facilities with highest TXML THIS WEEK',
     labels={'TXML': 'TXML Value', 'FACILITY': 'Facility'}
      )
-    
-    
-        #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
-    coly, colu = st.columns([2,1])
-    with coly:
-        st.plotly_chart(figa, use_container_width=True)
+with coly:
+     st.plotly_chart(figa, use_container_width=True)
+if highestb.shape[0]==0:
+    st.write("These facilities/facility have no high TXML or there is no report for them last week")
+else:
+    figk = px.bar(
+    highestb,
+    x='TXML',
+    y='FACILITY',
+    orientation='h',
+    title='Facilities with highest TXML LAST WEEK',
+    labels={'TXML': 'TXML Value', 'FACILITY': 'Facility'}
+     )
     with colu:
+        st.plotly_chart(figb, use_container_width=True)
         highest = highest[['FACILITY', 'TXML']]
         highest. set_index('FACILITY', inplace= True)
         highest['TXML'] = highest['TXML'].astype(int)
