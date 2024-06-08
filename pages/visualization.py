@@ -198,7 +198,7 @@ highest = filtered_df[filtered_df['TXML']>100]
 #highest = highest.sort_values(by =['TX ML'], ascending = False)
 highest = highest.sort_values(by=['TXML'])#, ascending=False)
 if highest.shape[0]==0:
-    st.write('This facility does not have high TXML or didn't report last week')
+    st.write("This facility does not have high TXML or didn't report last week")
 else:
     figa = px.bar(
     highest,
