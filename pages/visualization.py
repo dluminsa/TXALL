@@ -214,6 +214,7 @@ else:
     with colu:
         highest = highest[['FACILITY', 'TXML']]
         highest. set_index('FACILITY', inplace= True)
+        highest['TXML'] = highest['TXML'].astype(int)
         st.markdown('##')
         with st.expander('HIGHEST TXML'):
                  st.table(highest)
