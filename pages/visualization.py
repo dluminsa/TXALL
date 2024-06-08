@@ -130,6 +130,8 @@ melted = grouped.melt(id_vars=['WEEK'], value_vars=['Q2 CURR', 'Q3 CURR', 'POTEN
 
 melted2 = grouped.melt(id_vars=['WEEK'], value_vars=['TXML', 'TO'],
                             var_name='OUTCOME', value_name='Total')
+melted['WEEK'] = melted['WEEK'].astype(str)
+melted2['WEEK'] = melted2['WEEK'].astype(str)
 fig2 = px.line(melted, x='WEEK', y='Total', color='OUTCOME', markers=True,
               title='Trends in TXML and TO', labels={'WEEK':'WEEK', 'Total': 'No. of clients', 'OUTCOME': 'Outcomes'})
 
@@ -142,14 +144,14 @@ fig2.update_layout(
     xaxis=dict(showline=True, linewidth=1, linecolor='black'),  # Show x-axis line
     yaxis=dict(showline=True, linewidth=1, linecolor='black')   # Show y-axis line
 )
-
+fig2.update_xaxes(type='category')
 fig3.update_layout(
     width=800,  # Set the width of the plot
     height = 400,  # Set the height of the plot
     xaxis=dict(showline=True, linewidth=1, linecolor='black'),  # Show x-axis line
     yaxis=dict(showline=True, linewidth=1, linecolor='black')   # Show y-axis line
 )
-
+fig3.update_xaxes(type='category')
 colx,coly = st.columns([2,1])
 with colx:
     st.plotly_chart(fig2, use_container_width= True)
@@ -206,6 +208,7 @@ coly, colu = st.columns(2)
 if highesta.shape[0]==0:
     with coly:
          st.markdown('##')
+         st.markdown('##')
          st.write("Selected facility or facilities do not have high TXML or didn't report this week")
 else:
     figa = px.bar(
@@ -220,6 +223,7 @@ else:
          st.plotly_chart(figa, use_container_width=True)
 if highestb.shape[0]==0:
     with colu:
+         st.markdown('##')
          st.markdown('##')
          st.write("Selected facility or facilities do not have high TXML or didn't report last week")
 else:
