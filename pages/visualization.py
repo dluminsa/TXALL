@@ -20,6 +20,12 @@ for each in weeeks:
     dfs.append(dfa)
 df = pd.concat(dfs)
 df['WEEK'] = df['WEEK'].astype(int)
+df['POTENTIAL'] = df['POTENTIAL'].astype(int)
+df['TXML'] = df['TXML'].astype(int)
+df['TO'] = df['TO'].astype(int)
+df['TI'] = df['TI'].astype(int)
+df['Q2 CURR'] = df['Q2 CURR'].astype(int)
+df['Q3 CURR'] = df['Q3 CURR'].astype(int)
 #file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
 #df = pd.read_excel(file)
 st.sidebar.subheader('Filter from here ')
