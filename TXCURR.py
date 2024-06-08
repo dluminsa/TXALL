@@ -293,7 +293,8 @@ if file is not None:
             false = FALSE.shape[0]
             lost = TXML.shape[0]
             vl = WVL.shape[0]
-            perc = int((vl/curr)*100)
+            perc = round(vl/curr)*100)
+            exp = round(curr*0.95)
             novl = NOVL.shape[0]
             current_time = time.localtime()
             week = time.strftime("%V", current_time)
@@ -342,6 +343,7 @@ if file is not None:
                                 'TI': inn,
                                 'HAS VL' : vl,
                                 'VL COV (%)': perc,
+                                'EXPECTED': exp,
                                 'NO VL' : novl,
                                 'WEEK': week           
                                  }])
