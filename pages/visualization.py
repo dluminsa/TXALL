@@ -97,35 +97,35 @@ if bu ==0:
    b = 'all facilities have reported'
 else:
    b = f'{bu} have not reported'
+    
 if se ==0:
    s = 'all facilities reported'
 else:
    s = f'{se} have not reported'
+    
+if di ==0:
+   d = 'all facilities reported'
+else:
+   d = f'{di} have not reported'
+    
+if ka ==0:
+   k = 'all facilities reported'
+else:
+   k = f'{ka} have not reported'
+    
+if ci ==0:
+   c = 'all facilities reported'
+else:
+   c = f'{ci} have not reported'
+if all ==0:
+    st.write('** ALL FACILITIES IN THE CLUSTER REPORTED**')
+else:
+    st.mrkdown(f'**{all} facilities have not reported this week**')
+    st.markdown(f'** BUKOMANSIMBI {b}, SEMBABULE {s}, KALUNGU {k}, MKA CITY {c}, MKA DISTRICT {d}**')
+    with st.expander('Click to see them'):
+        st.dataframe(none)
    
 st.stop()
-
-# Filter out the rows that have a match in dfb
-non_reporting_facilities = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
-#reporteddistrict = list(filtered_df['DISTRICT'].unique())
-#dfy = dfx[dfx['DISTRICT'].isin(reporteddistrict )]
-
-#reportedfacilities = list(filtered_df['FACILITY'].unique())
-#noted = dfy[~dfy['FACILITY'].isin(reportedfacilities)]
-#noted = noted['FACILITY'].unique()
-#cols,cold,colf = st.columns([1,2,1])
-#cold.markdown("**FACILITIES THAT DIDN'T REPORT**")
-#number = len(noted)
-#nota = np.asarray([noted])
-#notb = pd.DataFrame(nota, columns=["DIDN'T REPORT"])
-#colq,colt = st.columns(2)
-#colq.markdown(f'{number} facilities in **{reporteddistrict}** have not reported this week')
-#with colt:
-    #with st.expander("Facilities that didn't submit"):
-     #    st.write(nota)  
- #   button = st. button('**Click here to view them**')
-  #  if button: 
-   #       nota = pd.DataFrame(noted)
-    #      st.write(f'{nota}')
 st.divider()
 #############################################################################################
 pot = filtered_df['POTENTIAL'].sum()
