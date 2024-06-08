@@ -202,7 +202,7 @@ highest = filtered_df[filtered_df['TXML']>100]
 highest = highest.sort_values(by=['TXML'])#, ascending=False)
 highesta = highest[highest['WEEK']==k]
 highestb = highest[highest['WEEK']==m]
-coly, colu = st.columns([2,1])
+coly, colu = st.columns(2)
 if highesta.shape[0]==0:
     st.write("These facilities/facility have no high TXML or there is no report for them this week")
 else:
