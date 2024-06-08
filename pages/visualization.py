@@ -187,7 +187,7 @@ fig5.update_layout(
 )
 
 # To display the figure (assuming you are in a Jupyter notebook or a compatible environment)
- st.plotly_chart(fig5, use_container_width= True)
+st.plotly_chart(fig5, use_container_width= True)
 #############################################################################################
 #HIGHEST TXML 
 st.divider()
