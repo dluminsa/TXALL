@@ -19,6 +19,7 @@ for each in weeeks:
     dfa = dfa.drop_duplicates(subset=['FACILITY'], keep = 'last')
     dfs.append(dfa)
 df = pd.concat(dfs)
+df['WEEK'] = df['WEEK'].astype(int)
 #file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
 #df = pd.read_excel(file)
 st.sidebar.subheader('Filter from here ')
