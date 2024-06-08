@@ -121,12 +121,12 @@ else:
 if all ==0:
     st.write('** ALL FACILITIES IN THE CLUSTER REPORTED**')
 else:
-    st.markdown(f'**{all} facilities have not reported this week**')
-    st.markdown(f'** BUKOMANSIMBI {b}, SEMBABULE {s}, KALUNGU {k}, MKA CITY {c}, MKA DISTRICT {d}**')
+    st.markdown(f'**{all} FACILITIES HAVE NOT REPORTED IN THIS WEEK**')
+    st.markdown(f'**BUKOMANSIMBI {b}, SEMBABULE {s}, KALUNGU {k}, MKA CITY {c}, MKA DISTRICT {d}**')
     with st.expander('Click to see them'):
         st.dataframe(none)
    
-st.stop()
+
 st.divider()
 #############################################################################################
 pot = filtered_df['POTENTIAL'].sum()
