@@ -85,7 +85,7 @@ buk = none[none['DISTRICT']=='BUKOMANSIMBI'].copy()
 semb = none[none['DISTRICT']=='SEMBABULE'].copy()
 dist = none[none['DISTRICT']=='MKA DISTRICT'].copy()
 kal = none[none['DISTRICT']=='KALUNGU'].copy()
-city = none[none['MKA CITY']=='MKA CITY'].copy()
+city = none[none['DISTRICT']=='MKA CITY'].copy()
 
 bu = buk.shape[0]
 se = semb.shape[0]
