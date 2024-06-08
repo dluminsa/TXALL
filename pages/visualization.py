@@ -194,7 +194,7 @@ st.plotly_chart(fig5, use_container_width= True)
 st.divider()
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
-#k= 24
+k= 24
 k = int(k)
 m = k-1
 highest = filtered_df[filtered_df['TXML']>100]
@@ -228,7 +228,7 @@ else:
     labels={'TXML': 'TXML Value', 'FACILITY': 'Facility'}
      )
     with colu:
-        st.plotly_chart(figb, use_container_width=True)
+        st.plotly_chart(figk, use_container_width=True)
         highest = highest[['FACILITY', 'TXML']]
         highest. set_index('FACILITY', inplace= True)
         highest['TXML'] = highest['TXML'].astype(int)
