@@ -351,7 +351,7 @@ if file is not None:
                     st.dataframe(data)
                     #SUBMISSION
                     # conn = st.connection('gsheets', type=GSheetsConnection)
-                    # exist = conn.read(worksheet ='TXML', usecols = list(range(13)), ttl=5)
+                    # exist = conn.read(worksheet ='TXML', usecols = list(range(14)), ttl=5)
                     # existing = exist.dropna(how='all')
                     col1,col2,col3 = st.columns([1,2,1])
                     with col3:
