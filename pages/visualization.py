@@ -79,7 +79,8 @@ dfb = df[df['WEEK'] == k].copy()
 dfb = dfb[['DISTRICT' , 'FACILITY']]
 merged = dfa.merge(dfb, on=['DISTRICT', 'FACILITY'], how='left', indicator=True)
 none = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
-#none = none.reset_index()
+none = none.reset_index()
+none = none.drop(columns='index')
 all = none.shape[0]
 buk = none[none['DISTRICT']=='BUKOMANSIMBI'].copy()
 semb = none[none['DISTRICT']=='SEMBABULE'].copy()
