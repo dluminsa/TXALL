@@ -158,7 +158,8 @@ with coly:
     st.plotly_chart(fig3, use_container_width= True)
     #st.plotly_chart(fig3, use_container_width=True)
 ############################################################################################
-melted = grouped.melt(id_vars=['WEEK'], value_vars=['Q2 CURR', 'POTENTIAL', 'Q3 CURR'],
+group = grouped[grouped['WEEK']>22]
+melted = group.melt(id_vars=['WEEK'], value_vars=['Q2 CURR', 'POTENTIAL', 'Q3 CURR'],
                             var_name='OUTCOME', value_name='Total')
 fig5 = px.bar(
     melted,
