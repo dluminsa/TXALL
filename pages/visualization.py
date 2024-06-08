@@ -277,18 +277,20 @@ with col1:
      poorvl.set_index('DISTRICT', inplace=True)
      with st.expander('FACILITIES WITH POOR VL COV'):
          st.dataframe(poorvl)
-with col2
+
 pied = filtered_df[filtered_df['WEEK']==k]    
 pied = pied[['HAS VL', 'NO VL']]
 melted = pied.melt(var_name='Category', value_name='values')
 fig = px.pie(melted, values= 'values', names='Category', hole=0.5)
     #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
 if pied.shape[0]==0:
-    st.markdown('##')
-    st.markdown('##')
-    st.write("Selected facility or facilities didn't report this week, so nothing to show")
+    with col2:
+        st.markdown('##')
+        st.markdown('##')
+        st.write("Selected facility or facilities didn't report this week, so nothing to show")
 else:
-    st.plotly_chart(fig, use_container_width=True)
+    with col2:
+        st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
 st.subheader('ALL DATA SET')
