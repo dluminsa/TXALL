@@ -70,7 +70,7 @@ elif facility:
 else:
     filtered_df = df3[df3['WEEK'].isin(week) & df3['DISTRICT'].isin(district)&df3['FACILITY'].isin(facility)]
 #################################################################################################
-st.divider
+st.divider()
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
 k = int(k)
@@ -79,7 +79,9 @@ dfb = df[df['WEEK'] == k].copy()
 dfb = dfb[['DISTRICT' , 'FACILITY']]
 merged = dfa.merge(dfb, on=['DISTRICT', 'FACILITY'], how='left', indicator=True)
 none = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
-st.write(none)
+none = none.reset_index()
+all = none.shape[0]
+st.write(all)
 st.stop()
 
 # Filter out the rows that have a match in dfb
