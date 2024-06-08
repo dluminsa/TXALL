@@ -214,8 +214,8 @@ else:
     title='Facilities with highest TXML THIS WEEK',
     labels={'TXML': 'TXML Value', 'FACILITY': 'Facility'}
      )
-with coly:
-     st.plotly_chart(figa, use_container_width=True)
+    with coly:
+         st.plotly_chart(figa, use_container_width=True)
 if highestb.shape[0]==0:
     st.write("These facilities/facility have no high TXML or there is no report for them last week")
 else:
