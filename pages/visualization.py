@@ -163,19 +163,20 @@ st.divider()
 highest = filtered_df[filtered_df['TXML']>100]
 if highest.shape[0]==0:
     st.write('This facility does not have high TXML')
-figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
-
-
-    #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
-coly, colu = st.columns([2,1])
-with coly:
-    st.plotly_chart(figa, use_container_width=True)
-with colu:
-    highest = highest[['FACILITY', 'TXML']]
-    highest. set_index('FACILITY', inplace= True)
-    st.markdown('##')
-    with st.expander('HIGHEST TXML'):
-             st.table(highest)
+else:
+    figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
+    
+    
+        #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
+    coly, colu = st.columns([2,1])
+    with coly:
+        st.plotly_chart(figa, use_container_width=True)
+    with colu:
+        highest = highest[['FACILITY', 'TXML']]
+        highest. set_index('FACILITY', inplace= True)
+        st.markdown('##')
+        with st.expander('HIGHEST TXML'):
+                 st.table(highest)
 #############################################################################################
 st.divider()
 col1, col2,col3 = st.columns(3)
