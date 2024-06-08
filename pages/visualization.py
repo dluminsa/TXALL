@@ -192,13 +192,14 @@ st.plotly_chart(fig5, use_container_width= True)
 #############################################################################################
 #HIGHEST TXML 
 st.divider()
+current_time = time.localtime()
+a = time.strftime("%V", current_time)
 highest = filtered_df[filtered_df['TXML']>100]
 #highest = highest.sort_values(by =['TX ML'], ascending = False)
-highest = highest.sort_values(by=['TXML'], ascending=False)
+highest = highest.sort_values(by=['TXML'])#, ascending=False)
 if highest.shape[0]==0:
-    st.write('This facility does not have high TXML')
+    st.write('This facility does not have high TXML or didn't report last week')
 else:
-    #figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
     figa = px.bar(
     highest,
     x='TXML',
