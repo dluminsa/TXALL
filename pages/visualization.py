@@ -12,8 +12,7 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read(worksheet='TXML', usecols=list(range(16)), ttl=5)
 df = df.dropna(how='all')
-st.write(df)
-st.stop()
+
 #file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
 #df = pd.read_excel(file)
 st.sidebar.subheader('Filter from here ')
