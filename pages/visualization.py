@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-df = conn.read(worksheet='TXML', usecols=list(range(15)), ttl=5)
+df = conn.read(worksheet='TXML', usecols=list(range(16)), ttl=5)
 df = df.dropna(how='all')
 st.write(df)
 st.stop()
