@@ -26,6 +26,9 @@ df['TO'] = df['TO'].astype(int)
 df['TI'] = df['TI'].astype(int)
 df['Q2 CURR'] = df['Q2 CURR'].astype(int)
 df['Q3 CURR'] = df['Q3 CURR'].astype(int)
+df['EXPECTED'] = df['EXPECTED'].astype(int)
+df['NO VL'] = df['NO VL'].astype(int)
+df['HAS VL'] = df['HAS VL'].astype(int)
 #file = r"C:\Users\Desire Lumisa\Downloads\TXML (5).xlsx"
 #df = pd.read_excel(file)
 st.sidebar.subheader('Filter from here ')
@@ -67,27 +70,40 @@ elif facility:
 else:
     filtered_df = df3[df3['WEEK'].isin(week) & df3['DISTRICT'].isin(district)&df3['FACILITY'].isin(facility)]
 #################################################################################################
-st.divider()
-reporteddistrict = list(filtered_df['DISTRICT'].unique())
-dfy = dfx[dfx['DISTRICT'].isin(reporteddistrict )]
+st.divider
+current_time = time.localtime()
+k = time.strftime("%V", current_time)
+k = int(k)
+dfa = dfx[['DISTRICT', 'FACILITY']].copy()
+dfb = df[df['WEEK'] == k].copy()
+dfb = dfb[['DISTRICT' , 'FACILITY']]
+merged = dfa.merge(dfb, on=['DISTRICT', 'FACILITY'], how='left', indicator=True)
+none = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
+st.write(none)
+st.stop()
 
-reportedfacilities = list(filtered_df['FACILITY'].unique())
-noted = dfy[~dfy['FACILITY'].isin(reportedfacilities)]
-noted = noted['FACILITY'].unique()
-cols,cold,colf = st.columns([1,2,1])
-cold.markdown("**FACILITIES THAT DIDN'T REPORT**")
-number = len(noted)
+# Filter out the rows that have a match in dfb
+non_reporting_facilities = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
+#reporteddistrict = list(filtered_df['DISTRICT'].unique())
+#dfy = dfx[dfx['DISTRICT'].isin(reporteddistrict )]
+
+#reportedfacilities = list(filtered_df['FACILITY'].unique())
+#noted = dfy[~dfy['FACILITY'].isin(reportedfacilities)]
+#noted = noted['FACILITY'].unique()
+#cols,cold,colf = st.columns([1,2,1])
+#cold.markdown("**FACILITIES THAT DIDN'T REPORT**")
+#number = len(noted)
 #nota = np.asarray([noted])
 #notb = pd.DataFrame(nota, columns=["DIDN'T REPORT"])
-colq,colt = st.columns(2)
-colq.markdown(f'{number} facilities in **{reporteddistrict}** have not reported this week')
-with colt:
+#colq,colt = st.columns(2)
+#colq.markdown(f'{number} facilities in **{reporteddistrict}** have not reported this week')
+#with colt:
     #with st.expander("Facilities that didn't submit"):
      #    st.write(nota)  
-    button = st. button('**Click here to view them**')
-    if button: 
-          nota = pd.DataFrame(noted)
-          st.write(f'{nota}')
+ #   button = st. button('**Click here to view them**')
+  #  if button: 
+   #       nota = pd.DataFrame(noted)
+    #      st.write(f'{nota}')
 st.divider()
 #############################################################################################
 pot = filtered_df['POTENTIAL'].sum()
@@ -203,7 +219,6 @@ st.plotly_chart(fig5, use_container_width= True)
 st.divider()
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
-#k= 24
 k = int(k)
 m = k-1
 highest = filtered_df[filtered_df['TXML']>100]
