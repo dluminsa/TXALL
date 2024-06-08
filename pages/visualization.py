@@ -194,6 +194,8 @@ st.plotly_chart(fig5, use_container_width= True)
 st.divider()
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
+st.write(k)
+st.stop()
 m = k-1
 highest = filtered_df[filtered_df['TXML']>100]
 #highest = highest.sort_values(by =['TX ML'], ascending = False)
