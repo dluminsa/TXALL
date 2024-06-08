@@ -203,5 +203,5 @@ with col2:
 
 st.divider()
 st.subheader('ALL DATA SET')
-all = filtered_df[filtered_df['WEEK']>0]
+all = filtered_df[filtered_df['WEEK']>22]
 st.write(all)
