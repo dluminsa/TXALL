@@ -162,7 +162,7 @@ with coly:
 st.divider()
 highest = filtered_df[filtered_df['TXML']>100]
 if highest.shape[0]==0:
-    st.write('This facility does not have high TXML']
+    st.write('This facility does not have high TXML')
 figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
 
 
