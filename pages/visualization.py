@@ -120,7 +120,7 @@ else:
 if all ==0:
     st.write('** ALL FACILITIES IN THE CLUSTER REPORTED**')
 else:
-    st.mrkdown(f'**{all} facilities have not reported this week**')
+    st.markdown(f'**{all} facilities have not reported this week**')
     st.markdown(f'** BUKOMANSIMBI {b}, SEMBABULE {s}, KALUNGU {k}, MKA CITY {c}, MKA DISTRICT {d}**')
     with st.expander('Click to see them'):
         st.dataframe(none)
