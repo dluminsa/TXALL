@@ -196,7 +196,15 @@ highest = filtered_df[filtered_df['TXML']>100]
 if highest.shape[0]==0:
     st.write('This facility does not have high TXML')
 else:
-    figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
+    #figa = px.pie(highest, values= 'TXML', names='FACILITY', hole=0.2, title='Facilities with highest TXML')
+    figa = px.bar(
+    highest,
+    x='TXML',
+    y='FACILITY',
+    orientation='h',
+    title='Facilities with highest TXML',
+    labels={'TXML': 'TXML Value', 'FACILITY': 'Facility'}
+     )
     
     
         #fig.update_traces(text = 'VL COVERAGE', text_position='Outside')
