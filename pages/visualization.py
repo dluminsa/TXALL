@@ -81,7 +81,28 @@ merged = dfa.merge(dfb, on=['DISTRICT', 'FACILITY'], how='left', indicator=True)
 none = merged[merged['_merge'] == 'left_only'].drop(columns=['_merge'])
 none = none.reset_index()
 all = none.shape[0]
-st.write(all)
+st.write(all
+buk = none[none['DISTRICT']=='BUKOMANSIMBI'].copy()
+semb = none[none['DISTRICT']=='SEMBABULE'].copy()
+dist = none[none['DISTRICT']=='MKA DISTRICT'].copy()
+kal = none[none['DISTRICT']=='KALUNGU'].copy()
+city = none[none['MKA CITY']=='BUKOMANSIMBI].copy()
+
+bu = buk.shape[0]
+se = semb.shape[0]
+di = dist.shape[0]
+ka = kal.shape[0]
+ci = city.shape[0]
+ 
+if bu ==0:
+   b = 'all facilities have reported'
+else:
+   b = f'{bu} have not reported'
+if se ==0:
+   s = 'all facilities reported'
+else:
+   s = f'{se} have not reported'
+   
 st.stop()
 
 # Filter out the rows that have a match in dfb
