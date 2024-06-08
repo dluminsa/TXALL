@@ -157,6 +157,37 @@ with colx:
 with coly:
     st.plotly_chart(fig3, use_container_width= True)
     #st.plotly_chart(fig3, use_container_width=True)
+############################################################################################
+melted = grouped.melt(id_vars=['WEEK'], value_vars=['Q2 CURR', 'POTENTIAL', 'Q3 CURR'],
+                            var_name='OUTCOME', value_name='Total')
+fig5 = px.bar(
+    melted,
+    x='WEEK',
+    y='Total',
+    color='OUTCOME',
+    title='Trends in TXML and TO',
+    labels={'WEEK': 'WEEK', 'Total': 'No. of clients', 'OUTCOME': 'Outcomes'},
+    barmode='group'  # Group bars by 'OUTCOME'
+)
+
+# Update the layout of the plot
+fig5.update_layout(
+    width=800,  # Set the width of the plot
+    height=400,  # Set the height of the plot
+    xaxis=dict(
+        showline=True,  # Show x-axis line
+        linewidth=1,    # Width of the x-axis line
+        linecolor='black'  # Color of the x-axis line
+    ),
+    yaxis=dict(
+        showline=True,  # Show y-axis line
+        linewidth=1,    # Width of the y-axis line
+        linecolor='black'  # Color of the y-axis line
+    )
+)
+
+# To display the figure (assuming you are in a Jupyter notebook or a compatible environment)
+ st.plotly_chart(fig5, use_container_width= True)
 #############################################################################################
 #HIGHEST TXML 
 st.divider()
