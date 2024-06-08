@@ -272,6 +272,7 @@ col1, col2 = st.columns(2)
 with col1:
      st.plotly_chart(fig4, use_container_width=True)
      poorvl = filtered_df[filtered_df['VL COV (%)']<95]
+     poorvl = poorvl[poorvl['WEEK']>22]
      poorvl= poorvl.sort_values(by = ['VL COV (%)'])
      poorvl = poorvl[['DISTRICT', 'FACILITY','VL COV (%)']]
      poorvl.set_index('DISTRICT', inplace=True)
