@@ -124,7 +124,7 @@ if file is not None:
                 pass
 
             try:
-                df['RD'] = pd.to_numeric(df['VD'], errors='coerce')
+                df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
                 base_date = pd.to_datetime('1899-12-30')
                 df['RD'] = base_date + pd.to_timedelta(df['AS'], unit='D')
                 #df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
