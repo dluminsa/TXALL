@@ -228,7 +228,10 @@ if file is not None:
             dfb = df.shape[0]
 
             # #SORTING THE RETURN VISIT DATE YEARS
+            st.write(df['RD'])
+            st.stop()
             df[['Rday', 'Ryear']] = df[['Rday', 'Ryear']].apply(pd.to_numeric, errors='coerce')
+            
             df['Ryear'] = df['Ryear'].fillna(2022)
             a = df[df['Ryear']>31].copy()
             b = df[df['Ryear']<32].copy()
