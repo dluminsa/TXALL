@@ -309,6 +309,7 @@ if file is not None:
             TXML = TXML[((TXML['Rmonth']<6) | ((TXML['Rmonth']==6) & (TXML['Rday']<3)))].copy()
             TXML['Tyear'] = pd.to_numeric(TXML['Tyear'], errors='coerce')
             TXML = TXML[TXML['Tyear']==1994].copy()
+            
             a = df[df['Ryear']==2025].copy()
             b = df[df['Ryear']==2024].copy()
             b[['Rmonth', 'Rday']] = b[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
@@ -316,6 +317,8 @@ if file is not None:
             b['Tyear'] = pd.to_numeric(b['Tyear'], errors='coerce')
             b = b[b['Tyear']==1994].copy()
             TXCURR = pd.concat([a,b])
+            st.write[TXCURR.shape[0]
+            st.stop()
             #TX NEW
             df[['Ayear', 'Amonth']] = df[['Ayear', 'Amonth']].apply(pd.to_numeric, errors='coerce')
             TXNEW = df[((df['Ayear']==2024) & (df['Amonth'].isin([4,5,6])))].copy()
