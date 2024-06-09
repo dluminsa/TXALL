@@ -105,6 +105,8 @@ if file is not None:
                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
             except:
                 pass
+            st.write(df['AS'].head(5))
+            st.write('him2')
             try:
                 df['AS'] = pd.to_numeric(df['AS'], errors='coerce')
                 df['AS'] = pd.to_datetime(df['AS'], origin='1899-12-30', unit='D')
