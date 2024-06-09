@@ -188,7 +188,7 @@ if file is not None:
             df['TI'] = df['TI'].str.replace('NaT', '',regex=True)
 
             #             #SORTING THE VIRAL LOAD YEARS
-            st.write(df['VD'])
+            #st.write(df['VD'])
             st.stop()
             df[['Vyear', 'Vmonth', 'Vday']] =df[['Vyear', 'Vmonth', 'Vday']].apply(pd.to_numeric, errors = 'coerce') 
             df['Vyear'] = df['Vyear'].fillna(2022)
