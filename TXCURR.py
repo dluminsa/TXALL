@@ -251,7 +251,7 @@ if file is not None:
             b = b.rename(columns={'Aday1': 'Aday'})
             df = pd.concat([a,b])
             dfe = df.shape[0]
-            st.write(df['Rmonth'])
+            st.write(df)
             st.write('HER')
             st.stop()
             #file = r"C:\Users\Desire Lumisa\Desktop\TX CURR\MATEETE.xlsx"
