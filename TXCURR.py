@@ -65,7 +65,7 @@ if file is not None:
             if df['TI'].str.contains('YES').any():
                 st.write("The transfer in column you are using doesn't have dates but words, like YES, kindly use the right transfer in colum")
                 st.stop()
-            
+            df[['AS', 'TI','RD', 'TO', 'TI']] = df[['AS', 'TI','RD', 'TO', 'TI']].astype(str) 
             df['TI'] = df['TI'].fillna('22/06/1905')
             df['AS'] = df['AS'].str.replace('/', '*', regex=True)
             df['RD'] = df['RD'].str.replace('/', '*', regex=True)
