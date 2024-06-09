@@ -78,6 +78,7 @@ if file is not None:
             df['VD'] = df['VD'].str.replace('-', '*',regex=True)
             df['TO'] = df['TO'].str.replace('-', '*',regex=True)
             df['TI'] = df['TI'].str.replace('-', '*',regex=True)
+            st.write(df['AS'].head(5))
 
             df['AS'] = df['AS'].str.replace('00:00:00', '', regex=True)
             df['RD'] = df['RD'].str.replace('00:00:00', '', regex=True)
