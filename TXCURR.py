@@ -140,9 +140,9 @@ if file is not None:
             except:
                 pass
 
-            df['VD'] = df['VD'].astype(int)
-            st.write(df['VD'])
-            st.stop()
+            #df['VD'] = df['VD'].astype(int)
+            #st.write(df['VD'])
+            #st.stop()
             
             try:
                 df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
