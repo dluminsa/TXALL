@@ -169,7 +169,7 @@ if file is not None:
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
             st.write(df['AS'].head(5))
-            st.stop()
+     
             df['AS'] = df['AS'].replace('*', '/', regex=True)
             df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
