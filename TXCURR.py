@@ -352,6 +352,9 @@ if file is not None:
             false = FALSE.shape[0]
             lost = TXML.shape[0]
             vl = WVL.shape[0]
+            st.write(vl)
+            st.write(curr)
+            st.stop()
             perc = round((vl/curr)*100)
             exp = round(curr*0.95)
             novl = NOVL.shape[0]
