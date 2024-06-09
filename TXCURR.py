@@ -113,7 +113,8 @@ if file is not None:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
-        
+            st.write(df)
+            st.stop() 
             try:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
@@ -123,9 +124,7 @@ if file is not None:
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
-                pass
-            st.write(df)
-            st.stop()    
+                pass   
             try:
                 df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
             except:
