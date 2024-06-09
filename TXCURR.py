@@ -195,7 +195,7 @@ if file is not None:
 
             #             #SORTING THE VIRAL LOAD YEARS
             #st.write(df['VD'])
-            st.stop()
+           #st.stop()
             df[['Vyear', 'Vmonth', 'Vday']] =df[['Vyear', 'Vmonth', 'Vday']].apply(pd.to_numeric, errors = 'coerce') 
             df['Vyear'] = df['Vyear'].fillna(2022)
             a = df[df['Vyear']>31].copy()
