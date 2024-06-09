@@ -263,31 +263,31 @@ if file is not None:
             dfy = dfy[((dfy['Rmonth']>3) | ((dfy['Rmonth']==3) & (dfy['Rday'] >3)))].copy()
             df = pd.concat([dfw,dfy])
             
-            df['Rday'] = df['Rday'].astype(str).str.split('.').str[0]
-            df['Rmonth'] = df['Rmonth'].astype(str).str.split('.').str[0]
-            df['Ryear'] = df['Ryear'].astype(str).str.split('.').str[0]
+            df['Rday1'] = df['Rday'].astype(str).str.split('.').str[0]
+            df['Rmonth1'] = df['Rmonth'].astype(str).str.split('.').str[0]
+            df['Ryear1'] = df['Ryear'].astype(str).str.split('.').str[0]
 
-            df['Vday'] = df['Vday'].astype(str).str.split('.').str[0]
-            df['Vmonth'] = df['Vmonth'].astype(str).str.split('.').str[0]
-            df['Vyear'] = df['Vyear'].astype(str).str.split('.').str[0]
+            df['Vday1'] = df['Vday'].astype(str).str.split('.').str[0]
+            df['Vmonth1'] = df['Vmonth'].astype(str).str.split('.').str[0]
+            df['Vyear1'] = df['Vyear'].astype(str).str.split('.').str[0]
 
             #df['Tiday'] = df['Tiday'].astype(str).str.split('.').str[0]
             #df['Timonth'] = df['Timonth'].astype(str).str.split('.').str[0]
             #df['Tiyear'] = df['Tiyear'].astype(str).str.split('.').str[0]
 
-            df['Aday'] = df['Aday'].astype(str).str.split('.').str[0]
-            df['Amonth'] = df['Amonth'].astype(str).str.split('.').str[0]
-            df['Ayear'] = df['Ayear'].astype(str).str.split('.').str[0]
+            df['Aday1'] = df['Aday'].astype(str).str.split('.').str[0]
+            df['Amonth1'] = df['Amonth'].astype(str).str.split('.').str[0]
+            df['Ayear1'] = df['Ayear'].astype(str).str.split('.').str[0]
             
-            df['Tday'] = df['Tday'].astype(str).str.split('.').str[0]
-            df['Tmonth'] = df['Tmonth'].astype(str).str.split('.').str[0]
-            df['Tyear'] = df['Tyear'].astype(str).str.split('.').str[0]
+            df['Tday1'] = df['Tday'].astype(str).str.split('.').str[0]
+            df['Tmonth1'] = df['Tmonth'].astype(str).str.split('.').str[0]
+            df['Tyear1'] = df['Tyear'].astype(str).str.split('.').str[0]
 
-            df['ART START DATE'] = df['Aday'] + '/' + df['Amonth'] + '/' + df['Ayear']
-            df['RETURN DATE'] = df['Rday'] + '/' + df['Rmonth'] + '/' + df['Ryear']
-            df['VL DATE'] = df['Vday'] + '/' + df['Vmonth'] + '/' + df['Vyear']
-            df['T OUT DATE'] = df['Tday'] + '/' + df['Tmonth'] + '/' + df['Tyear']
-            #df['T IN DATE'] = df['Rday'] + '/' + df['Rmonth'] + '/' + df['Ryear']
+            df['ART START DATE'] = df['Aday1'] + '/' + df['Amonth1'] + '/' + df['Ayear1']
+            df['RETURN DATE'] = df['Rday1'] + '/' + df['Rmonth1'] + '/' + df['Ryear1']
+            df['VL DATE'] = df['Vday1'] + '/' + df['Vmonth1'] + '/' + df['Vyear1']
+            df['T OUT DATE'] = df['Tday1'] + '/' + df['Tmonth1'] + '/' + df['Tyear1']
+            #df['T IN DATE'] = df['Rday1'] + '/' + df['Rmonth1'] + '/' + df['Ryear1']
 
             df['RETURN DATE'] = pd.to_datetime(df['RETURN DATE'], format='%d/%m/%Y', errors='coerce')
             df['VL DATE'] = pd.to_datetime(df['VL DATE'], format='%d/%m/%Y', errors='coerce')
