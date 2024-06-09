@@ -163,7 +163,7 @@ if file is not None:
                 df[['Tiyear', 'Timonth', 'Tiday']] = df['TI'].str.split('*', expand = True)
             except:
                 pass
-            dfrr = df.copy()
+          
                #BRINGING BACK THE / IN DATES
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].astype(str)
@@ -251,7 +251,9 @@ if file is not None:
             b = b.rename(columns={'Aday1': 'Aday'})
             df = pd.concat([a,b])
             dfe = df.shape[0]
-
+            st.write(df['Rmonth'])
+            st.write('HER')
+            st.stop()
             #file = r"C:\Users\Desire Lumisa\Desktop\TX CURR\MATEETE.xlsx"
             file2 = r'ALL.xlsx'
             dfx = pd.read_excel(file2)
@@ -302,7 +304,7 @@ if file is not None:
             #df = df.rename(columns={'A': 'ART NO'})#, 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
-            st.write(df['Rmonth'])
+         
             TXML = df[df['Ryear']==2024].copy()
             TXML[['Rmonth', 'Rday']] = TXML[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
             TXML = TXML[((TXML['Rmonth']>3) | ((TXML['Rmonth']==3) & (TXML['Rday']>3)))].copy()
