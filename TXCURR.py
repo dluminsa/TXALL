@@ -117,7 +117,7 @@ if file is not None:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
                 df['RD'] = df['RD'].fillna(2)
-                df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')#, errors='coerce')
+                df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D', errors='coerce')
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
