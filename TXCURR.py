@@ -112,7 +112,7 @@ if file is not None:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
-            st.write(df['RD'].head(5))
+            st.write(df['Rday'].head(5))
             st.stop()
             try:
                 #df['RD'] = df['RD'].astype(str)
