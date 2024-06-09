@@ -126,10 +126,10 @@ if file is not None:
             except:
                 pass
             try:
-                df['VD'] = df['VD'].astype(int)
-                st.write(df['VD'])
-                st.write('THIS')
-                st.stop()
+                #df['VD'] = df['VD'].astype(int)
+                #st.write(df['VD'])
+                #st.write('THIS')
+                #st.stop()
                 df['VD'] = pd.to_numeric(df['VD'], errors='ignore')
                 df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
                 df['VD'] =  df['VD'].astype(str)
@@ -138,6 +138,10 @@ if file is not None:
             except:
                 pass
 
+            df['VD'] = df['VD'].astype(int)
+            st.write(df['VD'])
+            st.stop()
+            
             try:
                 df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
             except:
