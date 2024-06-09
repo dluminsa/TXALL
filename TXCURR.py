@@ -176,12 +176,12 @@ if file is not None:
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
             
-            df['AS'] = df['AS'].replace('*', '/')#,regex=True)
-            df['RD'] = df['RD'].str.replace('*', '/',regex=True)
-            df['VD'] = df['VD'].str.replace('*', '/',regex=True)
+            #df['AS'] = df['AS'].replace('*', '/')#,regex=True)
+            #df['RD'] = df['RD'].str.replace('*', '/',regex=True)
+            #df['VD'] = df['VD'].str.replace('*', '/',regex=True)
             #df['LD'] = df['LD'].str.replace('*', '/',regex=True)
-            df['TO'] = df['TO'].str.replace('*', '/',regex=True)
-            df['TI'] = df['TI'].str.replace('*', '/',regex=True)
+            #df['TO'] = df['TO'].str.replace('*', '/',regex=True)
+            #df['TI'] = df['TI'].str.replace('*', '/',regex=True)
             st.write(df['AS'].head(5))
             st.write('heiiiiiiiiiii')
 
