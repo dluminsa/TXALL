@@ -411,7 +411,7 @@ if file is not None:
                     with colc:
                          dat = TOa.copy()
                          dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
-                         csv_data = dfrr.copy()
+                         csv_data = dfrr.to_csv(index=False)
                          #csv_data = dat.to_csv(index=False)
                          st.download_button(
                                      label=" DOWNLOAD TRANSFER OUTS",
