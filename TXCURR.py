@@ -173,7 +173,6 @@ if file is not None:
             df['AS'] = df['AS'].str.replace('*', '/', regex=True)
             df['RD'] = df['RD'].str.replace('*', '/',regex=True)
             df['VD'] = df['VD'].str.replace('*', '/',regex=True)
-            df['LD'] = df['LD'].str.replace('*', '/',regex=True)
             df['TO'] = df['TO'].str.replace('*', '/',regex=True)
             df['TI'] = df['TI'].str.replace('*', '/',regex=True)
 
