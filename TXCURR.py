@@ -112,28 +112,18 @@ if file is not None:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
+
+            df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
             try:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
-                df['RD'] = df['RD']*1
+                #df['RD'] = df['RD']*1
                 df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
-
-            try:
-                df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
-                base_date = pd.to_datetime('1899-12-30')
-                df['RD'] = base_date + pd.to_timedelta(df['AS'], unit='D')
-                #df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
-                df['RD'] =  df['RD'].astype(str)
-                df['RD'] = df['RD'].str.replace('-', '*',regex=True)
-                df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
-            except:
-                pass
-            
                 
             try:
                 df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
