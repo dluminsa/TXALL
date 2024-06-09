@@ -317,7 +317,7 @@ if file is not None:
             b['Tyear'] = pd.to_numeric(b['Tyear'], errors='coerce')
             b = b[b['Tyear']==1994].copy()
             TXCURR = pd.concat([a,b])
-            st.write[TXCURR.shape[0]
+            st.write(TXCURR.shape[0])
             st.stop()
             #TX NEW
             df[['Ayear', 'Amonth']] = df[['Ayear', 'Amonth']].apply(pd.to_numeric, errors='coerce')
@@ -380,7 +380,7 @@ if file is not None:
                     prev = int(preva.iloc[0,3])
                     name =str(preva.iloc[0,4])
                     UK = potential- prev - inn - new
-                    st.write(UK)
+                
                     grow = curr-prev
                     if grow>0:
                         st.success(f'WEBALE {name},😐 you have grown this TXCURR by {grow}, but you need to audit the TIs and TXNEWs, and watch out for RTT 👏👏👏')
