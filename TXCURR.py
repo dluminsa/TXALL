@@ -160,6 +160,7 @@ if file is not None:
             #df['LD'] = df['LD'].str.replace('*', '/',regex=True)
             df['TO'] = df['TO'].str.replace('*', '/',regex=True)
             df['TI'] = df['TI'].str.replace('*', '/',regex=True)
+            st.write(df['AS'].head(5))
 
             #Clearing NaT from te dates
             df['AS'] = df['AS'].str.replace('NaT', '',regex=True)
@@ -167,7 +168,8 @@ if file is not None:
             df['VD'] = df['VD'].str.replace('NaT', '',regex=True)
             df['TO'] = df['TO'].str.replace('NaT', '',regex=True)
             df['TI'] = df['TI'].str.replace('NaT', '',regex=True)
-           
+            st.write(df['AS'].head(5))
+            st.stop()
             #             #SORTING THE VIRAL LOAD YEARS
             df[['Vyear', 'Vmonth', 'Vday']] =df[['Vyear', 'Vmonth', 'Vday']].apply(pd.to_numeric, errors = 'coerce') 
             df['Vyear'] = df['Vyear'].fillna(2022)
