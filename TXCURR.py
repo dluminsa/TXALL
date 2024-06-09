@@ -95,9 +95,7 @@ if file is not None:
             df['VD'] = df['VD'].str.replace('00:00:00', '', regex=True)
             df['TO'] = df['TO'].str.replace('00:00:00', '', regex=True)
             df['TI'] = df['TI'].str.replace('00:00:00', '',regex=True)
-
-            st.write(df)
-            st.stop()
+            
             try:
                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
             except:
@@ -126,7 +124,8 @@ if file is not None:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
-                
+            st.write(df)
+            st.stop()    
             try:
                 df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
             except:
