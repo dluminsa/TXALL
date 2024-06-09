@@ -262,7 +262,44 @@ if file is not None:
             dfy[['Rmonth', 'Rday']] = dfy[['Rmonth', 'Rday']].apply(pd.to_numeric, errors = 'coerce')
             dfy = dfy[((dfy['Rmonth']>3) | ((dfy['Rmonth']==3) & (dfy['Rday'] >3)))].copy()
             df = pd.concat([dfw,dfy])
-            df = df.rename(columns={'A': 'ART NO', 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
+            
+            df['Rday'] = df['Rday'].astype(str).str.split('.').str[0]
+            df['Rmonth'] = df['Rmonth'].astype(str).str.split('.').str[0]
+            df['Ryear'] = df['Ryear'].astype(str).str.split('.').str[0]
+
+            df['Vday'] = df['Vday'].astype(str).str.split('.').str[0]
+            df['Vmonth'] = df['Vmonth'].astype(str).str.split('.').str[0]
+            df['Vyear'] = df['Vyear'].astype(str).str.split('.').str[0]
+
+            #df['Tiday'] = df['Tiday'].astype(str).str.split('.').str[0]
+            #df['Timonth'] = df['Timonth'].astype(str).str.split('.').str[0]
+            #df['Tiyear'] = df['Tiyear'].astype(str).str.split('.').str[0]
+
+            df['Aday'] = df['Aday'].astype(str).str.split('.').str[0]
+            df['Amonth'] = df['Amonth'].astype(str).str.split('.').str[0]
+            df['Ayear'] = df['Ayear'].astype(str).str.split('.').str[0]
+            
+            df['Tday'] = df['Tday'].astype(str).str.split('.').str[0]
+            df['Tmonth'] = df['Tmonth'].astype(str).str.split('.').str[0]
+            df['Tyear'] = df['Tyear'].astype(str).str.split('.').str[0]
+
+            df['ART START DATE'] = df['Aday'] + '/' + df['Amonth'] + '/' + df['Ayear']
+            df['RETURN DATE'] = df['Rday'] + '/' + df['Rmonth'] + '/' + df['Ryear']
+            df['VL DATE'] = df['Vday'] + '/' + df['Vmonth'] + '/' + df['Vyear']
+            df['T OUT DATE'] = df['Tday'] + '/' + df['Tmonth'] + '/' + df['Tyear']
+            #df['T IN DATE'] = df['Rday'] + '/' + df['Rmonth'] + '/' + df['Ryear']
+
+            df['RETURN DATE'] = pd.to_datetime(df['RETURN DATE'], format='%d/%m/%Y', errors='coerce')
+            df['VL DATE'] = pd.to_datetime(df['VL DATE'], format='%d/%m/%Y', errors='coerce')
+            df['T OUT DATE'] = pd.to_datetime(df['T OUT DATE'], format='%d/%m/%Y', errors='coerce')
+            df['ART START DATE'] = pd.to_datetime(df['ART START DATE'], format='%d/%m/%Y', errors='coerce')
+
+            df['RETURN DATE'] = df['RETURN DATE'].dt.strftime('%d/%m/%Y')
+            df['VL DATE'] = df['VL DATE'].dt.strftime('%d/%m/%Y')
+            df['T OUT DATE'] = df['T OUT DATE'].dt.strftime('%d/%m/%Y')
+            df['T IN DATE'] = df['T IN DATE'].dt.strftime('%d/%m/%Y')
+            
+            #df = df.rename(columns={'A': 'ART NO'})#, 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
             TXML = df[df['Ryear']==2024].copy()
@@ -411,8 +448,8 @@ if file is not None:
                     with colc:
                          dat = TOa.copy()
                          dat = dat[['ART NO', 'ART START DATE', 'RETURN DATE', 'VL DATE', 'T OUT DATE']]
-                         csv_data = dfrr.to_csv(index=False)
-                         #csv_data = dat.to_csv(index=False)
+                        
+                         csv_data = dat.to_csv(index=False)
                          st.download_button(
                                      label=" DOWNLOAD TRANSFER OUTS",
                                      data=csv_data,
