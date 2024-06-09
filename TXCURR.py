@@ -105,15 +105,15 @@ if file is not None:
             st.write('him')
             
             try:
-                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
+                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
             except:
                 pass
             try:
                 df['AS'] = pd.to_numeric(df['AS'], errors='coerce')
                 df['AS'] = pd.to_datetime(df['AS'], origin='1899-12-30', unit='D')
                 df['AS'] =  df['AS'].astype(str)
-                df['AS'] = df['AS'].str.replace('-', '*',regex=True)
-                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
+                #df['AS'] = df['AS'].str.replace('-', '*',regex=True)
+                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
             except:
                 pass
             try:
