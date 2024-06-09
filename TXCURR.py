@@ -114,6 +114,7 @@ if file is not None:
                 pass
 
             df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
+            st.write(df['RD'].dtype)
             try:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
