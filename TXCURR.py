@@ -128,10 +128,6 @@ if file is not None:
             except:
                 pass
             try:
-                #df['VD'] = df['VD'].astype(int)
-                #st.write(df['VD'])
-                #st.write('THIS')
-                #st.stop()
                 df['VD'] = pd.to_numeric(df['VD'], errors='coerce')
                 df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
                 df['VD'] =  df['VD'].astype(str)
@@ -140,9 +136,8 @@ if file is not None:
             except:
                 pass
 
-            #df['VD'] = df['VD'].astype(int)
-            #st.write(df['VD'])
-            #st.stop()
+            st.write(df['VD'].dtype)
+            st.stop()
             
             try:
                 df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
@@ -194,8 +189,7 @@ if file is not None:
             df['TI'] = df['TI'].str.replace('NaT', '',regex=True)
 
             #             #SORTING THE VIRAL LOAD YEARS
-            #st.write(df['VD'])
-           #st.stop()
+          
             df[['Vyear', 'Vmonth', 'Vday']] =df[['Vyear', 'Vmonth', 'Vday']].apply(pd.to_numeric, errors = 'coerce') 
             df['Vyear'] = df['Vyear'].fillna(2022)
             a = df[df['Vyear']>31].copy()
