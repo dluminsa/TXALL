@@ -277,7 +277,7 @@ if file is not None:
             df['T OUT DATE'] = df['T OUT DATE'].dt.strftime('%d/%m/%Y')
             df['ART START DATE'] = df['ART START DATE'].dt.strftime('%d/%m/%Y')
             
-            #df = df.rename(columns={'A': 'ART NO'})#, 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
+            df = df.rename(columns={'A': 'ART NO'})#, 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
          
