@@ -94,7 +94,7 @@ if file is not None:
             df['TI'] = df['TI'].str.replace('00:00:00', '',regex=True)
             
             try:
-                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
+                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
             except:
                 pass
             try:
