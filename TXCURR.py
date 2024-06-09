@@ -113,17 +113,11 @@ if file is not None:
             except:
                 pass
 
-            df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
-            df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D', errors='coerce')
-            df['RD'] =  df['RD'].astype(str)
-            df['RD'] = df['RD'].str.replace('-', '*',regex=True)
-            st.write(df['RD'])
-            st.stop()
             try:
                 #df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
                 #df['RD'] = df['RD']*1
-                df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')
+                df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D', errors='coerce')
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
@@ -226,7 +220,7 @@ if file is not None:
             dfb = df.shape[0]
 
             # #SORTING THE RETURN VISIT DATE YEARS
-            st.write(df['RD'])
+            #st.write(df['RD'])
             #st.stop()
             df[['Rday', 'Ryear']] = df[['Rday', 'Ryear']].apply(pd.to_numeric, errors='coerce')
             
