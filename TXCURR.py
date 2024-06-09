@@ -13,6 +13,8 @@ st.set_page_config(
     page_icon =":bar_chart"
     )
 
+st.header('CODE UNDER MAINTENANCE, TRY AGAIN TOMORROW')
+st.stop()
 st.subheader('MOCK UP TX CURR AND VL COV')
 st.success('WELCOME, this app was developed by Dr. Luminsa Desire, for any concern, reach out to him at desireluminsa@gmail.com')
 today = datetime.now()
