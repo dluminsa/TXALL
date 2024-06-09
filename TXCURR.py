@@ -302,6 +302,7 @@ if file is not None:
             #df = df.rename(columns={'A': 'ART NO'})#, 'AS': 'ART START DATE', 'RD': 'RETURN DATE', 'VD': 'VL DATE', 'TO': 'T OUT DATE'})
             potential = df.shape[0]
             df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']] = df[['Tyear', 'Ryear', 'Rmonth', 'Rday', 'Vyear', 'Vmonth', 'Ayear']].apply(pd.to_numeric, errors='coerce')
+            st.write(df['Rmonth'])
             TXML = df[df['Ryear']==2024].copy()
             TXML[['Rmonth', 'Rday']] = TXML[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
             TXML = TXML[((TXML['Rmonth']>3) | ((TXML['Rmonth']==3) & (TXML['Rday']>3)))].copy()
@@ -310,6 +311,7 @@ if file is not None:
             TXML['Tyear'] = pd.to_numeric(TXML['Tyear'], errors='coerce')
             TXML = TXML[TXML['Tyear']==1994].copy()
             
+            #TX CURR
             a = df[df['Ryear']==2025].copy()
             b = df[df['Ryear']==2024].copy()
             b[['Rmonth', 'Rday']] = b[['Rmonth', 'Rday']].apply(pd.to_numeric, errors='coerce')
