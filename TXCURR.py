@@ -97,26 +97,22 @@ if file is not None:
                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
             except:
                 pass
-            st.write(df['AS'].head(5))
-            st.write('him2')
             try:
                 df['AS'] = pd.to_numeric(df['AS'], errors='ignore')
                 df['AS'] = pd.to_datetime(df['AS'], origin='1899-12-30', unit='D')
                 df['AS'] =  df['AS'].astype(str)
-                #df['AS'] = df['AS'].str.replace('-', '*',regex=True)
-                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('-', expand = True)
+                df['AS'] = df['AS'].str.replace('-', '*',regex=True)
+                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
             except:
                 pass
-            st.write(df['AS'].head(5))
-            st.write('him')
-            
+                
             try:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
                 pass
             try:
                 #df['RD'] = df['RD'].astype(str)
-                df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
+                df['RD'] = pd.to_numeric(df['RD'], errors='ignore')
                 df['RD'] = df['RD']*1
                 df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D')
                 df['RD'] =  df['RD'].astype(str)
@@ -130,7 +126,7 @@ if file is not None:
             except:
                 pass
             try:
-                df['VD'] = pd.to_numeric(df['VD'], errors='coerce')
+                df['VD'] = pd.to_numeric(df['VD'], errors='ignore')
                 df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
                 df['VD'] =  df['VD'].astype(str)
                 df['VD'] = df['VD'].str.replace('-', '*',regex=True)
@@ -144,7 +140,7 @@ if file is not None:
                 pass
 
             try:
-                df['TO'] = pd.to_numeric(df['TO'], errors='coerce')
+                df['TO'] = pd.to_numeric(df['TO'], errors='ignore')
                 df['TO'] = pd.to_datetime(df['TO'], origin='1899-12-30', unit='D')
                 df['TO'] =  df['TO'].astype(str)
                 df['TO'] = df['TO'].str.replace('-', '*',regex=True)
@@ -157,7 +153,7 @@ if file is not None:
             except:
                 pass
             try:
-                df['TI'] = pd.to_numeric(df['TI'], errors='coerce')
+                df['TI'] = pd.to_numeric(df['TI'], errors='ignore')
                 df['TI'] = pd.to_datetime(df['TI'], origin='1899-12-30', unit='D')
                 df['TI'] =  df['TI'].astype(str)
                 df['TI'] = df['TI'].str.replace('-', '*',regex=True)
@@ -173,14 +169,12 @@ if file is not None:
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
             
-            #df['AS'] = df['AS'].replace('*', '/')#,regex=True)
-            #df['RD'] = df['RD'].str.replace('*', '/',regex=True)
-            #df['VD'] = df['VD'].str.replace('*', '/',regex=True)
-            #df['LD'] = df['LD'].str.replace('*', '/',regex=True)
-            #df['TO'] = df['TO'].str.replace('*', '/',regex=True)
-            #df['TI'] = df['TI'].str.replace('*', '/',regex=True)
-            st.write(df['AS'].head(5))
-            st.write('heiiiiiiiiiii')
+            df['AS'] = df['AS'].replace('*', '/', regex=True)
+            df['RD'] = df['RD'].str.replace('*', '/',regex=True)
+            df['VD'] = df['VD'].str.replace('*', '/',regex=True)
+            df['LD'] = df['LD'].str.replace('*', '/',regex=True)
+            df['TO'] = df['TO'].str.replace('*', '/',regex=True)
+            df['TI'] = df['TI'].str.replace('*', '/',regex=True)
 
             #Clearing NaT from te dates
             df['AS'] = df['AS'].str.replace('NaT', '',regex=True)
