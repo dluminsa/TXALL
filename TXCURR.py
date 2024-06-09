@@ -297,8 +297,6 @@ if file is not None:
             b['Tyear'] = pd.to_numeric(b['Tyear'], errors='coerce')
             b = b[b['Tyear']==1994].copy()
             TXCURR = pd.concat([a,b])
-            st.write(TXCURR.shape[0])
-            st.stop()
             #TX NEW
             df[['Ayear', 'Amonth']] = df[['Ayear', 'Amonth']].apply(pd.to_numeric, errors='coerce')
             TXNEW = df[((df['Ayear']==2024) & (df['Amonth'].isin([4,5,6])))].copy()
@@ -335,9 +333,6 @@ if file is not None:
             false = FALSE.shape[0]
             lost = TXML.shape[0]
             vl = WVL.shape[0]
-            st.write(vl)
-            st.write(curr)
-            st.stop()
             perc = round((vl/curr)*100)
             exp = round(curr*0.95)
             novl = NOVL.shape[0]
