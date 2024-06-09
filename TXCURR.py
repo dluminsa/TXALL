@@ -128,7 +128,7 @@ if file is not None:
                 base_date = pd.to_datetime('1899-12-30')
                 df['RD'] = base_date + pd.to_timedelta(df['AS'], unit='D')
                 #df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D')
-                df['RD'] =  df[RD'].astype(str)
+                df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
