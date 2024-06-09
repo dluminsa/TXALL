@@ -31,9 +31,6 @@ col3.markdown('Rename the **TRANSFER IN DATE** column to **TI**')
 col3.markdown('Rename the **HIV VIRAL LOAD DATE** column to **VD**')
 
 file = st.file_uploader("Upload your EMR extract here", type=['csv', 'xlsx', 'txt'])
-df = pd.read_excel(file)
-st.write(df)
-st.stop()
 
 ext = None
 if file is not None:
@@ -75,6 +72,9 @@ if file is not None:
             df['TI'] = df['TI'].astype(str)
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
+            
+            st.write(df)
+            st.stop()
             
             df['TI'] = df['TI'].fillna('22/06/1905')
             
