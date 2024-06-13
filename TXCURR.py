@@ -99,15 +99,20 @@ if file is not None:
             try:
                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
             except:
+                pass
+            try:
                  df['AS'] = pd.to_numeric(df['AS'], errors='coerce')
                  df['AS'] = pd.to_datetime(df['AS'], origin='1899-12-30', unit='D', errors='coerce')
                  df['AS'] =  df['AS'].astype(str)
                  df['AS'] = df['AS'].str.replace('-', '*',regex=True)
                  df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
-                
+            except:
+                pass    
             try:
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
             except:
+                pass
+            try:
                 df['RD'] = df['RD'].astype(str)
                 df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
                 df['RD'] = df['RD'].fillna(2)
@@ -115,32 +120,45 @@ if file is not None:
                 df['RD'] =  df['RD'].astype(str)
                 df['RD'] = df['RD'].str.replace('-', '*',regex=True)
                 df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
-                
+            except:
+                pass
             try:
                 df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
             except:
+                pass
+            try:
                 df['VD'] = pd.to_numeric(df['VD'], errors='coerce')
                 df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D', errors='coerce')
                 df['VD'] =  df['VD'].astype(str)
                 df['VD'] = df['VD'].str.replace('-', '*',regex=True)
                 df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
+            except:
+                pass
             try:
                 df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
             except:
+                pass
+            try:
                 df['TO'] = pd.to_numeric(df['TO'], errors='coerce')
                 df['TO'] = pd.to_datetime(df['TO'], origin='1899-12-30', unit='D', errors='coerce')
                 df['TO'] =  df['TO'].astype(str)
                 df['TO'] = df['TO'].str.replace('-', '*',regex=True)
                 df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
+            except:
+                pass
                 
             try:
                df[['Tiyear', 'Timonth', 'Tiday']] = df['TI'].str.split('*', expand = True)
             except:
+                pass
+            try:
                 df['TI'] = pd.to_numeric(df['TI'], errors='coerce')
                 df['TI'] = pd.to_datetime(df['TI'], origin='1899-12-30', unit='D', errors='coerce')
                 df['TI'] =  df['TI'].astype(str)
                 df['TI'] = df['TI'].str.replace('-', '*',regex=True)
                 df[['Tiyear', 'Timonth', 'Tiday']] = df['TI'].str.split('*', expand = True)
+            except:
+                pass
           
                #BRINGING BACK THE / IN DATES
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
