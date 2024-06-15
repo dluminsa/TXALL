@@ -12,7 +12,8 @@ st.set_page_config(
     page_title = 'MOCK TX CURR',
     page_icon =":bar_chart"
     )
-
+st.write('TRY ON MONDAY')
+st.stop()
 #st.header('CODE UNDER MAINTENANCE, TRY AGAIN TOMORROW')
 #st.stop()
 st.subheader('MOCK UP TX CURR AND VL COV')
