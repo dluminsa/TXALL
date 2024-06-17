@@ -12,8 +12,7 @@ st.set_page_config(
     page_title = 'MOCK TX CURR',
     page_icon =":bar_chart"
     )
-st.write('TRY ON MONDAY')
-st.stop()
+
 #st.header('CODE UNDER MAINTENANCE, TRY AGAIN TOMORROW')
 #st.stop()
 st.subheader('MOCK UP TX CURR AND VL COV')
@@ -74,21 +73,8 @@ if file is not None:
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
             
-           
-            
-            df['TI'] = df['TI'].fillna('22/06/1905')
-            
-            df['AS'] = df['AS'].str.replace('/', '*', regex=True)
-            df['RD'] = df['RD'].str.replace('/', '*', regex=True)
-            df['VD'] = df['VD'].str.replace('/', '*',regex=True)
-            df['TO'] = df['TO'].str.replace('/', '*',regex=True)
-            df['TI'] = df['TI'].str.replace('/', '*',regex=True)
-            
-            df['AS'] = df['AS'].str.replace('-', '*',regex=True)
-            df['RD'] = df['RD'].str.replace('-', '*',regex=True)
-            df['VD'] = df['VD'].str.replace('-', '*',regex=True)
-            df['TO'] = df['TO'].str.replace('-', '*',regex=True)
-            df['TI'] = df['TI'].str.replace('-', '*',regex=True)
+            y = pd.DataFrame({'A' :['2','3','4'], 'TI':['1-1-1',1,'1/1/1'], 'RD':['1-1-1',1,'1/1/1'], 
+                              'TO':['1-1-1',1,'1/1/1'], 'AS':['1-1-1',1,'1/1/1'], 'VD':['1-1-1',1,'1/1/1']})  
             
 
             df['AS'] = df['AS'].str.replace('00:00:00', '', regex=True)
@@ -96,71 +82,92 @@ if file is not None:
             df['VD'] = df['VD'].str.replace('00:00:00', '', regex=True)
             df['TO'] = df['TO'].str.replace('00:00:00', '', regex=True)
             df['TI'] = df['TI'].str.replace('00:00:00', '',regex=True)
-            
-            try:
-                df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                 df['AS'] = pd.to_numeric(df['AS'], errors='coerce')
-                 df['AS'] = pd.to_datetime(df['AS'], origin='1899-12-30', unit='D', errors='coerce')
-                 df['AS'] =  df['AS'].astype(str)
-                 df['AS'] = df['AS'].str.replace('-', '*',regex=True)
-                 df[['Ayear', 'Amonth', 'Aday']] = df['AS'].str.split('*', expand = True)
-            except:
-                pass    
-            try:
-                df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df['RD'] = df['RD'].astype(str)
-                df['RD'] = pd.to_numeric(df['RD'], errors='coerce')
-                df['RD'] = df['RD'].fillna(2)
-                df['RD'] = pd.to_datetime(df['RD'], origin='1899-12-30', unit='D', errors='coerce')
-                df['RD'] =  df['RD'].astype(str)
-                df['RD'] = df['RD'].str.replace('-', '*',regex=True)
-                df[['Ryear', 'Rmonth', 'Rday']] = df['RD'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df['VD'] = pd.to_numeric(df['VD'], errors='coerce')
-                df['VD'] = pd.to_datetime(df['VD'], origin='1899-12-30', unit='D', errors='coerce')
-                df['VD'] =  df['VD'].astype(str)
-                df['VD'] = df['VD'].str.replace('-', '*',regex=True)
-                df[['Vyear', 'Vmonth', 'Vday']] = df['VD'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df['TO'] = pd.to_numeric(df['TO'], errors='coerce')
-                df['TO'] = pd.to_datetime(df['TO'], origin='1899-12-30', unit='D', errors='coerce')
-                df['TO'] =  df['TO'].astype(str)
-                df['TO'] = df['TO'].str.replace('-', '*',regex=True)
-                df[['Tyear', 'Tmonth', 'Tday']] = df['TO'].str.split('*', expand = True)
-            except:
-                pass
-                
-            try:
-               df[['Tiyear', 'Timonth', 'Tiday']] = df['TI'].str.split('*', expand = True)
-            except:
-                pass
-            try:
-                df['TI'] = pd.to_numeric(df['TI'], errors='coerce')
-                df['TI'] = pd.to_datetime(df['TI'], origin='1899-12-30', unit='D', errors='coerce')
-                df['TI'] =  df['TI'].astype(str)
-                df['TI'] = df['TI'].str.replace('-', '*',regex=True)
-                df[['Tiyear', 'Timonth', 'Tiday']] = df['TI'].str.split('*', expand = True)
-            except:
-                pass
+            df = pd.concat([df,y])
+
+
+            df['AS'] = df['AS'].astype(str)
+            df['RD'] = df['RD'].astype(str)
+            df['TI'] = df['TI'].astype(str)
+            df['TO'] = df['TO'].astype(str)
+            df['VD'] = df['VD'].astype(str)
+
+
+            # SPLITTING ART START DATE
+            A = df[df['AS'].str.contains('-')]
+            a = df[~df['AS'].str.contains('-')]
+            B = a[a['AS'].str.contains('/')]
+            C = a[~a['AS'].str.contains('/')]
+
+            A[['Ayear', 'Amonth', 'Aday']] = A['AS'].str.split('-', expand = True)
+            B[['Ayear', 'Amonth', 'Aday']] = B['AS'].str.split('/', expand = True)
+                        
+            C['AS'] = pd.to_numeric(C['AS'], errors='coerce')
+            C['AS'] = pd.to_datetime(C['AS'], origin='1899-12-30', unit='D', errors='coerce')
+            C['AS'] =  C['AS'].astype(str)
+            C[['Ayear', 'Amonth', 'Aday']] = C['AS'].str.split('-', expand = True)
+            df = pd.concat([A,B,C])
           
+            # SORTING THE RETURN VISIT DATE
+            A = df[df['RD'].str.contains('-')]
+            a = df[~df['RD'].str.contains('-')]
+            B = a[a['RD'].str.contains('/')]
+            C = a[~a['RD'].str.contains('/')]
+      
+            A[['Ryear', 'Rmonth', 'Rday']] = A['RD'].str.split('-', expand = True)
+            B[['Ryear', 'Rmonth', 'Rday']] = B['RD'].str.split('/', expand = True)
+                        
+            C['RD'] = pd.to_numeric(C['RD'], errors='coerce')
+            C['RD'] = pd.to_datetime(C['RD'], origin='1899-12-30', unit='D', errors='coerce')
+            C['RD'] =  C['RD'].astype(str)
+            C[['Ryear', 'Rmonth', 'Rday']] = C['RD'].str.split('-', expand = True)
+            df = pd.concat([A,B,C]) 
+          
+            #SORTING THE VD DATE
+            A = df[df['VD'].str.contains('-')]
+            a = df[~df['VD'].str.contains('-')]
+            B = a[a['VD'].str.contains('/')]
+            C = a[~a['VD'].str.contains('/')]
+
+            A[['Vyear', 'Vmonth', 'Vday']] = A['VD'].str.split('-', expand = True)
+            B[['Vyear', 'Vmonth', 'Vday']] = B['VD'].str.split('/', expand = True)
+                        
+            C['VD'] = pd.to_numeric(C['VD'], errors='coerce')
+            C['VD'] = pd.to_datetime(C['VD'], origin='1899-12-30', unit='D', errors='coerce')
+            C['VD'] =  C['VD'].astype(str)
+            C[['Vyear', 'Vmonth', 'Vday']] = C['VD'].str.split('-', expand = True)
+            df = pd.concat([A,B,C])
+
+            #SORTING THE TO DATE
+            A = df[df['TO'].str.contains('-')]
+            a = df[~df['TO'].str.contains('-')]
+            B = a[a['TO'].str.contains('/')]
+            C = a[~a['TO'].str.contains('/')]
+
+            A[['Tyear', 'Tmonth', 'Tday']] = A['TO'].str.split('-', expand = True)
+            B[['Tyear', 'Tmonth', 'Tday']] = B['TO'].str.split('/', expand = True)
+                        
+            C['TO'] = pd.to_numeric(C['TO'], errors='coerce')
+            C['TO'] = pd.to_datetime(C['TO'], origin='1899-12-30', unit='D', errors='coerce')
+            C['TO'] =  C['TO'].astype(str)
+            C[['Tyear', 'Tmonth', 'Tday']] = C['TO'].str.split('-', expand = True)
+            df = pd.concat([A,B,C])
+        
+
+           #SORTING THE TI DATE
+            A = df[df['TI'].str.contains('-')]
+            a = df[~df['TI'].str.contains('-')]
+            B = a[a['TI'].str.contains('/')]
+            C = a[~a['TI'].str.contains('/')]
+
+            A[['Tiyear', 'Timonth', 'Tiday']] = A['TI'].str.split('-', expand = True)
+            B[['Tiyear', 'Timonth', 'Tiday']] = B['TI'].str.split('/', expand = True)
+                        
+            C['TI'] = pd.to_numeric(C['TI'], errors='coerce')
+            C['TI'] = pd.to_datetime(C['TI'], origin='1899-12-30', unit='D', errors='coerce')
+            C['TI'] =  C['TI'].astype(str)
+            C[['Tiyear', 'Timonth', 'Tiday']] = C['TI'].str.split('-', expand = True)
+            df = pd.concat([A,B,C])
+
                #BRINGING BACK THE / IN DATES
             #df[['AS', 'RD', 'VD','TO','TI']] = df[['AS', 'RD', 'VD','TO','TI']].astype(str)
             df['AS'] = df['AS'].astype(str)
@@ -168,13 +175,6 @@ if file is not None:
             df['TI'] = df['TI'].astype(str)
             df['TO'] = df['TO'].astype(str)
             df['VD'] = df['VD'].astype(str)
-         
-     
-            df['AS'] = df['AS'].str.replace('*', '/', regex=True)
-            df['RD'] = df['RD'].str.replace('*', '/',regex=True)
-            df['VD'] = df['VD'].str.replace('*', '/',regex=True)
-            df['TO'] = df['TO'].str.replace('*', '/',regex=True)
-            df['TI'] = df['TI'].str.replace('*', '/',regex=True)
 
             #Clearing NaT from te dates
             df['AS'] = df['AS'].str.replace('NaT', '',regex=True)
