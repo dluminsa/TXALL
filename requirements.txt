@@ -1,10 +1,12 @@
 openpyxl
-pandas
+#pandas
 plotly
-numpy
+#numpy
 streamlit
 gspread
 google-auth
 oauth2client
 st-gsheets-connection
 git+https://github.com/streamlit/gsheets-connection
+numpy==1.22.0
+pandas==1.4.0
