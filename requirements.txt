@@ -1,7 +1,6 @@
 openpyxl
 pandas
 plotly
-numpy
 streamlit
 gspread
 google-auth
