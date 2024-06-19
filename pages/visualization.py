@@ -129,11 +129,11 @@ else:
 
 st.divider()
 #############################################################################################
-dfa = filtered_df[filtered_df['WEEK']==k].copy()
-pot = dfa['POTENTIAL'].sum()
-Q2 = dfa['Q2 CURR'].sum()
-ti = dfa['TI'].sum()
-new = dfa['TX NEW'].sum()
+#dfa = filtered_df[filtered_df['WEEK']==k].copy()
+pot = filtered_df['POTENTIAL'].sum()
+Q2 = filtered_df['Q2 CURR'].sum()
+ti = filtered_df['TI'].sum()
+new = filtered_df['TX NEW'].sum()
 uk = pot -Q2-ti
 los = dfa['TXML'].sum()
 to  = dfa['TO'].sum()
