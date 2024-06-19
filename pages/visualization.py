@@ -129,14 +129,15 @@ else:
 
 st.divider()
 #############################################################################################
-pot = filtered_df['POTENTIAL'].sum()
-Q2 = filtered_df['Q2 CURR'].sum()
-ti = filtered_df['TI'].sum()
-new = filtered_df['TX NEW'].sum()
+dfa = filtered_df[filtered_df['WEEK']==k].copy()
+pot = dfa['POTENTIAL'].sum()
+Q2 = dfa['Q2 CURR'].sum()
+ti = dfa['TI'].sum()
+new = dfa['TX NEW'].sum()
 uk = pot -Q2-ti
-los = filtered_df['TXML'].sum()
-to  = filtered_df['TO'].sum()
-q3 = filtered_df['Q3 CURR'].sum()
+los = dfa['TXML'].sum()
+to  = dfa['TO'].sum()
+q3 = dfa['Q3 CURR'].sum()
 labels = ["Q2 Curr", "TI", "TX NEW", 'Unkown',"Potential", "TXML", "TO", "Q3 Curr"]
 values = [Q2, ti, new, uk, pot, -los, -to, q3]
 measure = ["absolute", "relative", "relative","relative", "total", "relative", "relative", "total"]
