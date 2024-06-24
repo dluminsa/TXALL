@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-df = conn.read(worksheet='TXML', usecols=list(range(16)), ttl=5)
+df = conn.read(worksheet='TXML', usecols=list(range(17)), ttl=5)
 df = df.dropna(how='all')
 dfs=[]
 weeeks = df['WEEK'].unique()
