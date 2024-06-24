@@ -374,7 +374,14 @@ if file is not None:
                     prev = int(preva.iloc[0,3])
                     name =str(preva.iloc[0,4])
                     UK = potential- prev - inn - new
-                
+
+                    ba = prev - curr
+                    if ba > 0:
+                        bal == ba
+                    elif ba == 0:
+                        bal = 'EVEN'
+                    elif ba < 0:
+                        bal == 'EXCEEDED'
                     grow = curr-prev
                     if grow ==0:
                         st.success(f'WEBALE {name},😐 this TXCURR has broken even (Q2 CURR is equal to Q3 CURR), but you need to add more clients to grow it even further 👏👏👏')
@@ -403,6 +410,7 @@ if file is not None:
                                 'POTENTIAL': potential,
                                 'Q3 CURR': curr,
                                 'TXML' : lost,
+                                 'BALANCE': bal,
                                 'TX NEW' : new,
                                 'TO' : out,
                                 'FALSE TO': false,
@@ -417,7 +425,7 @@ if file is not None:
                     st.dataframe(data)
                     #SUBMISSION
                     # conn = st.connection('gsheets', type=GSheetsConnection)
-                    # exist = conn.read(worksheet ='TXML', usecols = list(range(14)), ttl=5)
+                    # exist = conn.read(worksheet ='TXML', usecols = list(range(15)), ttl=5)
                     # existing = exist.dropna(how='all')
                     col1,col2,col3 = st.columns([1,2,1])
                     with col3:
