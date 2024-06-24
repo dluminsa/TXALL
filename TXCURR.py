@@ -377,7 +377,7 @@ if file is not None:
 
                     ba = prev - curr
                     if ba > 0:
-                        bal == ba
+                        bal = ba
                     elif ba == 0:
                         bal = 'EVEN'
                     elif ba < 0:
