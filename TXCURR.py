@@ -376,7 +376,14 @@ if file is not None:
                     UK = potential- prev - inn - new
                 
                     grow = curr-prev
-                    if grow>0:
+                    if grow ==0:
+                        st.success(f'WEBALE {name},😐 this TXCURR has broken even (Q2 CURR is equal to Q3 CURR), but you need to add more clients to grow it even further 👏👏👏')
+                        if perc > 94:
+                            st.success(f'Even the VL COVERAGE is good, at {perc}%  👏👏👏')
+                        else:
+                            st.warning(f'**However the VL COVERAGE is poor, at {perc}%** 🥲')
+
+                    elif grow>0:
                         st.success(f'WEBALE {name},😐 you have grown this TXCURR by {grow}, but you need to audit the TIs and TXNEWs, and watch out for RTT 👏👏👏')
                         if perc > 94:
                             st.success(f'Even the VL COVERAGE is good, at {perc}%  👏👏👏')
