@@ -334,10 +334,12 @@ else:
 
 st.divider()
 achieved = filtered_df[filtered_df['BALANCE'].isin(['EXCEEDED', 'EVEN'])].reset_index().copy()
-achieved = achieved.drop_duplicates(subset =['FACILITY'])
+achieved = achieved.drop_duplicates(subset =['FACILITY'], keep= 'last')
 achieved['VL COV (%)'] = achieved['VL COV (%)'].astype(int)
+num = achieved['FACILITY'].nunique()
 achieved = achieved[['DISTRICT','FACILITY', 'Q2 CURR', 'Q3 CURR', 'BALANCE','TXML', 'VL COV (%)']].copy() 
 st.write('FACILITIES THAT HAVE ACHIEVED')
+st.markdown(<h4>f'{num} facilities have achieved so far'</h2>)
 st.table(achieved)
 st.divider()
 st.subheader('ALL DATA SET')
