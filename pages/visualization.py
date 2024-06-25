@@ -333,9 +333,10 @@ else:
         st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
-achieved = filtered_df[filtered_df['BALANCE'].isin(['EXCEEDED', 'EVEN'])].copy()
+achieved = filtered_df[filtered_df['BALANCE'].isin(['EXCEEDED', 'EVEN'])].reset_index().copy()
 achieved = achieved.drop_duplicates(subset =['FACILITY'])
-achieved = achieved[['FACILITY', 'Q2 CURR', 'Q3 CURR', 'BALANCE','TXML', 'VL COV (%)']].copy() 
+achieved['VL COV (%)'] = achieved['VL COV (%)'].astype(int)
+achieved = achieved[['DISTRICT','FACILITY', 'Q2 CURR', 'Q3 CURR', 'BALANCE','TXML', 'VL COV (%)']].copy() 
 st.write('FACILITIES THAT HAVE ACHIEVED')
 st.table(achieved)
 st.divider()
