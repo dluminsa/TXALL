@@ -381,7 +381,7 @@ if file is not None:
                     elif ba == 0:
                         bal = 'EVEN'
                     elif ba < 0:
-                        bal == 'EXCEEDED'
+                        bal = 'EXCEEDED'
                     grow = curr-prev
                     if grow ==0:
                         st.success(f'WEBALE {name},😐 this TXCURR has broken even (Q2 CURR is equal to Q3 CURR), but you need to add more clients to grow it even further 👏👏👏')
