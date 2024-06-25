@@ -306,7 +306,6 @@ fig4.update_layout(
     yaxis=dict(showline=True, linewidth=1, linecolor='black')   # Show y-axis line
 )
 
-
 col1, col2 = st.columns(2)
 with col1:
      st.plotly_chart(fig4, use_container_width=True)
@@ -339,7 +338,7 @@ achieved['VL COV (%)'] = achieved['VL COV (%)'].astype(int)
 num = achieved['FACILITY'].nunique()
 achieved = achieved[['DISTRICT','FACILITY', 'Q2 CURR', 'Q3 CURR', 'BALANCE','TXML', 'VL COV (%)']].copy() 
 st.write('FACILITIES THAT HAVE ACHIEVED')
-st.markdown(f"<h4>{num} facilities have achieved so far</h4>", unsafe_allow_html=True)
+st.markdown(f"<h6>{num} facilities have achieved so far</h6>", unsafe_allow_html=True)
 st.table(achieved)
 st.divider()
 st.subheader('ALL DATA SET')
