@@ -333,6 +333,10 @@ else:
         st.plotly_chart(fig, use_container_width=True)
 
 st.divider()
+achieved = filtered_df[filtered_df['BALANCE'].isin('ACHIEVED', 'EVEN')].copy()
+st.write('FACILITIES THAT HAVE ACHIEVED')
+st.table(achieved)
+st.divider()
 st.subheader('ALL DATA SET')
 all = filtered_df[filtered_df['WEEK']>22]
 st.write(all)
