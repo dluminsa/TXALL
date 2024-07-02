@@ -189,8 +189,8 @@ if file is not None:
             df['Vyear'] = df['Vyear'].fillna(2022)
             a = df[df['Vyear']>31].copy()
             b = df[df['Vyear']<32].copy()
-            b = b.rename(columns={'Vyear': 'Vday1', 'Vday': 'Vyear'})
-            b = b.rename(columns={'Vday1': 'Vday'})
+            b = b.rename(columns={'Vyear': 'Vday2', 'Vday': 'Vyear'})
+            b = b.rename(columns={'Vday2': 'Vday'})
             df = pd.concat([a,b])
             dfa = df.shape[0]
 
@@ -211,8 +211,8 @@ if file is not None:
             df['Tiyear'] = df['Tiyear'].fillna(2022)
             a = df[df['Tiyear']>31].copy()
             b = df[df['Tiyear']<32].copy()
-            b = b.rename(columns={'Tiyear': 'Tiday1', 'Tiday': 'Tiyear'})
-            b = b.rename(columns={'Tiday1': 'Tiday'})
+            b = b.rename(columns={'Tiyear': 'Tiday2', 'Tiday': 'Tiyear'})
+            b = b.rename(columns={'Tiday2': 'Tiday'})
             df = pd.concat([a,b])
             dfb = df.shape[0]
 
@@ -224,8 +224,8 @@ if file is not None:
             df['Ryear'] = df['Ryear'].fillna(2022)
             a = df[df['Ryear']>31].copy()
             b = df[df['Ryear']<32].copy()
-            b = b.rename(columns={'Ryear': 'Rday1', 'Rday': 'Ryear'})
-            b = b.rename(columns={'Rday1': 'Rday'})
+            b = b.rename(columns={'Ryear': 'Rday2', 'Rday': 'Ryear'})
+            b = b.rename(columns={'Rday2': 'Rday'})
 
             df = pd.concat([a,b])
             dfc = df.shape[0]
@@ -234,8 +234,8 @@ if file is not None:
             df['Tyear'] = df['Tyear'].fillna(1994)
             a = df[df['Tyear']>31].copy()
             b = df[df['Tyear']<32].copy()
-            b = b.rename(columns={'Tyear': 'Tday1', 'Tday': 'Tyear'})
-            b = b.rename(columns={'Tday1': 'Tday'})
+            b = b.rename(columns={'Tyear': 'Tday2', 'Tday': 'Tyear'})
+            b = b.rename(columns={'Tday2': 'Tday'})
             df = pd.concat([a,b])
 
             # dfd = df.shape[0]
@@ -244,8 +244,8 @@ if file is not None:
             df['Ayear'] = df['Ayear'].fillna(2022)
             a = df[df['Ayear']>31].copy()
             b = df[df['Ayear']<32].copy()
-            b = b.rename(columns={'Ayear': 'Aday1', 'Aday': 'Ayear'})
-            b = b.rename(columns={'Aday1': 'Aday'})
+            b = b.rename(columns={'Ayear': 'Aday2', 'Aday': 'Ayear'})
+            b = b.rename(columns={'Aday2': 'Aday'})
             df = pd.concat([a,b])
             dfe = df.shape[0]
            
