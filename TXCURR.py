@@ -108,10 +108,10 @@ if file is not None:
             df = pd.concat([A,B,C])
           
             # SORTING THE RETURN VISIT DATE
-            A = df[df['RD'].str.contains('-')]
-            a = df[~df['RD'].str.contains('-')]
-            B = a[a['RD'].str.contains('/')]
-            C = a[~a['RD'].str.contains('/')]
+            A = df[df['RD'].str.contains('-')].copy()
+            a = df[~df['RD'].str.contains('-')].copy()
+            B = a[a['RD'].str.contains('/')].copy()
+            C = a[~a['RD'].str.contains('/')].copy()
       
             A[['Ryear', 'Rmonth', 'Rday']] = A['RD'].str.split('-', expand = True)
             B[['Ryear', 'Rmonth', 'Rday']] = B['RD'].str.split('/', expand = True)
@@ -123,10 +123,10 @@ if file is not None:
             df = pd.concat([A,B,C]) 
           
             #SORTING THE VD DATE
-            A = df[df['VD'].str.contains('-')]
-            a = df[~df['VD'].str.contains('-')]
-            B = a[a['VD'].str.contains('/')]
-            C = a[~a['VD'].str.contains('/')]
+            A = df[df['VD'].str.contains('-')].copy()
+            a = df[~df['VD'].str.contains('-')].copy()
+            B = a[a['VD'].str.contains('/')].copy()
+            C = a[~a['VD'].str.contains('/')].copy()
 
             A[['Vyear', 'Vmonth', 'Vday']] = A['VD'].str.split('-', expand = True)
             B[['Vyear', 'Vmonth', 'Vday']] = B['VD'].str.split('/', expand = True)
@@ -138,10 +138,10 @@ if file is not None:
             df = pd.concat([A,B,C])
 
             #SORTING THE TO DATE
-            A = df[df['TO'].str.contains('-')]
-            a = df[~df['TO'].str.contains('-')]
-            B = a[a['TO'].str.contains('/')]
-            C = a[~a['TO'].str.contains('/')]
+            A = df[df['TO'].str.contains('-')].copy()
+            a = df[~df['TO'].str.contains('-')].copy()
+            B = a[a['TO'].str.contains('/')].copy()
+            C = a[~a['TO'].str.contains('/')].copy()
 
             A[['Tyear', 'Tmonth', 'Tday']] = A['TO'].str.split('-', expand = True)
             B[['Tyear', 'Tmonth', 'Tday']] = B['TO'].str.split('/', expand = True)
@@ -154,10 +154,10 @@ if file is not None:
         
 
            #SORTING THE TI DATE
-            A = df[df['TI'].str.contains('-')]
-            a = df[~df['TI'].str.contains('-')]
-            B = a[a['TI'].str.contains('/')]
-            C = a[~a['TI'].str.contains('/')]
+            A = df[df['TI'].str.contains('-')].copy()
+            a = df[~df['TI'].str.contains('-')].copy()
+            B = a[a['TI'].str.contains('/')].copy()
+            C = a[~a['TI'].str.contains('/')].copy()
 
             A[['Tiyear', 'Timonth', 'Tiday']] = A['TI'].str.split('-', expand = True)
             B[['Tiyear', 'Timonth', 'Tiday']] = B['TI'].str.split('/', expand = True)
